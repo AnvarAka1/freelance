@@ -1,0 +1,10 @@
+.Li {
+    display: inline-block;
+    margin-right: 30px;
+
+}
+
+.Li a {
+    text-decoration: none;
+    color: #C4C4C4;
+}
