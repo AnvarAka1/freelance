@@ -1,8 +1,9 @@
 import React from "react";
 import NavigationItem from "./NavigationItem/NavigationItem";
+import classes from "./NavigationItems.module.css";
 const navigationItems = props => {
   return (
-    <ul style={{ padding: "0", margin: "0" }}>
+    <ul className={classes.NavigationItems}>
       <NavigationItem>FEED</NavigationItem>
       <NavigationItem>FREELANCERS</NavigationItem>
       <NavigationItem>DASHBOARD</NavigationItem>

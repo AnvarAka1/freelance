@@ -5,15 +5,17 @@ import classes from "./SearchField.module.css";
 const searchField = props => {
   return (
     <div className={classes.SearchField}>
-      <InputBase placeholder="Search" className={classes.Input} />
-      <Icon
-        onClick={() => {
-          alert("Search");
-        }}
-        className={classes.SearchIcon}
-      >
-        search
-      </Icon>
+      <div className={classes.SearchFieldWrapper}>
+        <InputBase placeholder="Search" className={classes.Input} />
+        <Icon
+          onClick={() => {
+            alert("Search");
+          }}
+          className={classes.SearchIcon}
+        >
+          search
+        </Icon>
+      </div>
     </div>
   );
 };
