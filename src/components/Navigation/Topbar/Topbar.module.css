@@ -1,3 +1,13 @@
+.AppBar {
+    background-color: #fff !important;
+}
+
+.IconButton {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end
+}
+
 .li {
     display: inline-block;
 }
