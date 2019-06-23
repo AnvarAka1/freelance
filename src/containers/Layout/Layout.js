@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Topbar from "../../components/Navigation/Topbar/Topbar";
 import Grid from "@material-ui/core/Grid";
 import Person from "../../components/Person/Person";
+import Photo from "../../assets/photo.png";
 // Needs to be converted to functional component and use REDUX for handling the state
 class Layout extends Component {
   state = {
@@ -45,7 +46,10 @@ class Layout extends Component {
           searchButtonClicked={this.searchButtonHandler}
         />
         <Grid container>
-          <Grid item xs={12}>
+          <Grid item xs={2}>
+            <Person image={Photo} />
+          </Grid>
+          <Grid item xs={10}>
             <main>{this.props.children}</main>
           </Grid>
         </Grid>
