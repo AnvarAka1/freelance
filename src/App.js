@@ -1,10 +1,12 @@
 import React from "react";
 import Layout from "./containers/Layout/Layout";
-
+import UserSettings from "./containers/UserSettings/UserSettings";
 function App() {
   return (
     <div>
-      <Layout>Content</Layout>
+      <Layout>
+        <UserSettings />
+      </Layout>
     </div>
   );
 }
