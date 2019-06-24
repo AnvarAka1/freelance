@@ -1,1 +1,23 @@
 .PersonInfo {}
+
+.Name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1C1C1C;
+    margin: 5px 0;
+}
+
+.Grey {
+    margin: 0;
+    color: #777777;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+
+
+.Description {
+    margin: 15px 0;
+    font-size: 14px;
+    color: #333333
+}
