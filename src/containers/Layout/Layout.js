@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Person from "../../components/Person/Person";
 import Photo from "../../assets/photo.png";
 import BreadCrumbs from "../../components/UI/BreadCrumbs/BreadCrumbs";
+import classes from "./Layout.module.css";
 // import { Switch, Router } from "react-router-dom";
 // Needs to be converted to functional component and use REDUX for handling the state
 class Layout extends Component {
@@ -73,19 +74,21 @@ class Layout extends Component {
           userName: Anvar
           Photo: src
         */}
-        <Grid container>
-          <Grid item xs={12}>
-            <BreadCrumbs crumbs={crumbs} />
+        <div className={classes.Padding}>
+          <Grid container>
+            <Grid item xs={12}>
+              <BreadCrumbs crumbs={crumbs} />
+            </Grid>
+            <Grid item xs={2}>
+              <Person isUser={true} image={Photo} />
+            </Grid>
+            <Grid item xs={10}>
+              <main onClick={event => this.searchButtonHandler(event, false)}>
+                {this.props.children}
+              </main>
+            </Grid>
           </Grid>
-          <Grid item xs={2}>
-            <Person isUser={true} image={Photo} />
-          </Grid>
-          <Grid item xs={10}>
-            <main onClick={event => this.searchButtonHandler(event, false)}>
-              {this.props.children}
-            </main>
-          </Grid>
-        </Grid>
+        </div>
       </React.Fragment>
     );
   }
