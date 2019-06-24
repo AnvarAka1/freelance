@@ -3,7 +3,8 @@ import Topbar from "../../components/Navigation/Topbar/Topbar";
 import Grid from "@material-ui/core/Grid";
 import Person from "../../components/Person/Person";
 import Photo from "../../assets/photo.png";
-import { Switch, Router } from "react-router-dom";
+import BreadCrumbs from "../../components/UI/BreadCrumbs/BreadCrumbs";
+// import { Switch, Router } from "react-router-dom";
 // Needs to be converted to functional component and use REDUX for handling the state
 class Layout extends Component {
   state = {
@@ -38,6 +39,23 @@ class Layout extends Component {
     });
   };
   render() {
+    const crumbs = [
+      {
+        id: 1,
+        link: "/",
+        name: "Dashboard"
+      },
+      {
+        id: 2,
+        link: "/hello",
+        name: "Core"
+      },
+      {
+        id: 3,
+        link: null,
+        name: "Path"
+      }
+    ];
     return (
       <React.Fragment>
         <Topbar
@@ -56,6 +74,9 @@ class Layout extends Component {
           Photo: src
         */}
         <Grid container>
+          <Grid item xs={12}>
+            <BreadCrumbs crumbs={crumbs} />
+          </Grid>
           <Grid item xs={2}>
             <Person isUser={true} image={Photo} />
           </Grid>
