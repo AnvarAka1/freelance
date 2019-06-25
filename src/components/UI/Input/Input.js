@@ -1,4 +1,5 @@
 import React from "react";
+import classes from "./Input.module.css";
 
 const input = props => {
   let inputField;
@@ -6,6 +7,7 @@ const input = props => {
     case "textarea":
       inputField = (
         <textarea
+          className={classes.Textarea}
           {...props.elementConfig}
           disabled={props.disabled}
           onChange={props.inputChangedHandler}
@@ -17,6 +19,7 @@ const input = props => {
     default:
       inputField = (
         <input
+          className={classes.Input}
           {...props.elementConfig}
           disabled={props.disabled}
           onChange={props.inputChangedHandler}

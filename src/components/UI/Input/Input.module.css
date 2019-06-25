@@ -1,0 +1,19 @@
+.Input,
+.Textarea {
+    padding: 8px 15px;
+    color: #777777;
+    font-size: 12px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px #E5E5E5 solid;
+    box-sizing: border-box
+}
+
+.Input {
+    width: 100%;
+
+}
+
+.Textarea {
+    width: 100%;
+}

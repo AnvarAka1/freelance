@@ -32,3 +32,8 @@
     background-color: #777777;
     cursor: not-allowed
 }
+
+.Form {
+    width: 190px;
+    margin-top: 15px
+}
