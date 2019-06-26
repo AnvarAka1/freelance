@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Lable.module.css";
-const label = props => {
+const lable = props => {
   return <p className={classes.Lable}>{props.children}</p>;
 };
 
-export default label;
+export default lable;

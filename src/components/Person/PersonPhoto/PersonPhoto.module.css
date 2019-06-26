@@ -1,5 +1,6 @@
 .PersonPhoto {
     padding: 5px;
+    border: 5px #fff solid
 }
 
 .PersonPhoto img {
@@ -12,7 +13,8 @@
     box-sizing: border-box;
     width: 50px;
     height: 50px;
-    cursor: pointer
+    cursor: pointer;
+    border: none
 }
 
 .CirclePhoto img {
