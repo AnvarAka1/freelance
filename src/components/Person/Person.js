@@ -7,7 +7,7 @@ const person = props => {
   return (
     <div className={classes.Person}>
       <PersonPhoto image={props.image} />
-      <PersonInfo onUserPage={true} />
+      <PersonInfo onUserPage={false} />
     </div>
   );
 };

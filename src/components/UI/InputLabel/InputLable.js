@@ -5,7 +5,7 @@ import classes from "./InputLable.module.css";
 const inputLabel = props => {
   return (
     <div className={classes.InputLabel}>
-      <Label>{props.label}</Label>
+      <Label>{props.lable}</Label>
       <Input {...props} />
     </div>
   );

@@ -1,0 +1,15 @@
+.NewPubication {}
+
+.FormButton {
+    display: flex;
+    align-items: flex-end;
+
+    height: 100%;
+
+}
+
+.FormButton button {
+    margin-top: 0;
+    height: 36px;
+    width: 100%
+}

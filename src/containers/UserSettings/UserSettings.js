@@ -9,7 +9,7 @@ class UserSettings extends Component {
   state = {
     form: {
       name: {
-        label: "first name",
+        lable: "first name",
         input: "input",
         elementConfig: {
           placeholder: "John",
@@ -30,7 +30,7 @@ class UserSettings extends Component {
         valid: false
       },
       surname: {
-        label: "Surname",
+        lable: "Surname",
         input: "input",
         elementConfig: {
           placeholder: "Doe",
@@ -51,7 +51,7 @@ class UserSettings extends Component {
         valid: false
       },
       description: {
-        label: "Description",
+        lable: "Description",
         input: "textarea",
         elementConfig: {
           placeholder:
@@ -71,7 +71,7 @@ class UserSettings extends Component {
         valid: false
       },
       company: {
-        label: "Company",
+        lable: "Company",
         input: "input",
         elementConfig: {
           placeholder: "Unitel Ltd.",
@@ -92,7 +92,7 @@ class UserSettings extends Component {
         valid: false
       },
       position: {
-        label: "Position",
+        lable: "Position",
         input: "input",
         elementConfig: {
           placeholder: "Manager",
@@ -113,7 +113,7 @@ class UserSettings extends Component {
         valid: false
       },
       number: {
-        label: "Phone number",
+        lable: "Phone number",
         input: "input",
         elementConfig: {
           placeholder: "Phone number",
@@ -134,7 +134,7 @@ class UserSettings extends Component {
         valid: false
       },
       mail: {
-        label: "e-mail",
+        lable: "E-mail",
         input: "input",
         elementConfig: {
           placeholder: "johndoe@mail.com",
@@ -157,7 +157,7 @@ class UserSettings extends Component {
     },
     securityForm: {
       curPass: {
-        label: "Current password",
+        lable: "Current password",
         input: "input",
         elementConfig: {
           placeholder: "••••••",
@@ -176,7 +176,7 @@ class UserSettings extends Component {
         valid: false
       },
       newPass: {
-        label: "New password",
+        lable: "New password",
         input: "input",
         elementConfig: {
           placeholder: "••••••",
@@ -195,7 +195,7 @@ class UserSettings extends Component {
         valid: false
       },
       ConfirmPass: {
-        label: "Confirm password",
+        lable: "Confirm password",
         input: "input",
         elementConfig: {
           placeholder: "••••••",
@@ -213,7 +213,9 @@ class UserSettings extends Component {
         },
         valid: false
       }
-    }
+    },
+    formIsValid: false,
+    securityFormIsValid: false
   };
 
   inputChangedHandler = (event, id, type) => {
@@ -262,9 +264,14 @@ class UserSettings extends Component {
     }
     const formElements = formArray.map(formElement => {
       return (
-        <Grid item {...formElement.config.grid} key={formElement.id}>
+        <Grid
+          item
+          style={{ padding: "0 15px" }}
+          {...formElement.config.grid}
+          key={formElement.id}
+        >
           <InputLabel
-            label={formElement.config.label}
+            lable={formElement.config.lable}
             elementConfig={formElement.config.elementConfig}
             input={formElement.config.input}
             disabled={false}
@@ -281,9 +288,14 @@ class UserSettings extends Component {
     }
     const securityElements = securityArray.map(securityElement => {
       return (
-        <Grid item {...securityElement.config.grid} key={securityElement.id}>
+        <Grid
+          item
+          {...securityElement.config.grid}
+          key={securityElement.id}
+          style={{ padding: "0 15px" }}
+        >
           <InputLabel
-            label={securityElement.config.label}
+            lable={securityElement.config.lable}
             elementConfig={securityElement.config.elementConfig}
             input={securityElement.config.input}
             disabled={false}
@@ -296,9 +308,9 @@ class UserSettings extends Component {
       );
     });
     return (
-      <Grid container className={classes.UserSettings}>
+      <Grid container className={classes.UserSettings} spacing={3}>
         <Grid item xs={6}>
-          <Heading>General information</Heading>
+          <Heading link="something.com">General information</Heading>
           <form
             onSubmit={event => this.submitInfoHandler(event)}
             className={classes.Form}

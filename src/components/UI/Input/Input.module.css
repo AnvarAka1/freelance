@@ -1,19 +1,54 @@
 .Input,
 .Textarea {
-    padding: 8px 15px;
-    color: #777777;
-    font-size: 12px;
-    outline: none;
-    border-radius: 5px;
-    border: 1px #E5E5E5 solid;
-    box-sizing: border-box
+  padding: 8px 15px;
+  color: #777777;
+  font-size: 12px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px #e5e5e5 solid;
+  box-sizing: border-box;
 }
 
 .Input {
-    width: 100%;
-
+  width: 100%;
 }
 
 .Textarea {
-    width: 100%;
+  width: 100%;
+  min-height: 200px;
+  max-height: 340px;
+}
+
+.FileInput {
+  /* color: transparent; */
+  color: #777;
+  background: white;
+  height: 32px;
+  /* padding: 0; */
+  padding-left: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  /* position: absolute; */
+}
+
+.FileInput::-webkit-file-upload-button {
+  width: 0;
+  cursor: pointer;
+  position: absolute;
+  content: "";
+  color: transparent;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+.FileInput::-webkit-file-upload-button:before {
+  content: "";
+}
+
+.FileInput::-webkit-file-upload-button:after {
+  content: "";
 }
