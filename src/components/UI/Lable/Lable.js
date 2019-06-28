@@ -1,7 +1,11 @@
 import React from "react";
 import classes from "./Lable.module.css";
 const lable = props => {
-  return <p className={classes.Lable}>{props.children}</p>;
+  const classLableArray = [classes.Lable];
+  if (props.project) {
+    classLableArray.push(classes.LableOverflow);
+  }
+  return <p className={classLableArray.join(" ")}>{props.children}</p>;
 };
 
 export default lable;

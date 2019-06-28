@@ -3,8 +3,8 @@ import Heading from "../../components/Heading/Heading";
 import InputLabel from "../../components/UI/InputLabel/InputLable";
 import classes from "./UserSettings.module.css";
 import Button from "../../components/UI/Button/Button";
-import Grid from "@material-ui/core/Grid";
-
+import Grid from "../../components/Grid/Grid";
+import GridPosition from "../../components/Grid/GridPosition/GridPosition";
 class UserSettings extends Component {
   state = {
     form: {
@@ -264,12 +264,7 @@ class UserSettings extends Component {
     }
     const formElements = formArray.map(formElement => {
       return (
-        <Grid
-          item
-          style={{ padding: "0 15px" }}
-          {...formElement.config.grid}
-          key={formElement.id}
-        >
+        <Grid item {...formElement.config.grid} key={formElement.id}>
           <InputLabel
             lable={formElement.config.lable}
             elementConfig={formElement.config.elementConfig}
@@ -288,12 +283,7 @@ class UserSettings extends Component {
     }
     const securityElements = securityArray.map(securityElement => {
       return (
-        <Grid
-          item
-          {...securityElement.config.grid}
-          key={securityElement.id}
-          style={{ padding: "0 15px" }}
-        >
+        <Grid item {...securityElement.config.grid} key={securityElement.id}>
           <InputLabel
             lable={securityElement.config.lable}
             elementConfig={securityElement.config.elementConfig}
@@ -307,35 +297,91 @@ class UserSettings extends Component {
         </Grid>
       );
     });
+
+    const content = (
+      <form
+        onSubmit={event => this.submitInfoHandler(event)}
+        className={classes.Form}
+      >
+        <Grid container>
+          <Grid item xs={12}>
+            <Heading link="something.com">General information</Heading>
+          </Grid>
+          {formElements}
+          <Grid item xs={12}>
+            <Button addClass="Form" type="disabled">
+              Save
+            </Button>
+          </Grid>
+        </Grid>
+      </form>
+    );
+    const addContent = (
+      <React.Fragment>
+        <Heading>Security</Heading>
+        <form
+          onSubmit={event => this.submitSecurityHandler(event)}
+          className={classes.Form}
+        >
+          <Grid container>
+            {securityElements}
+            <Grid item xs={12}>
+              <Button addClass="Form" type="disabled">
+                Save
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
+      </React.Fragment>
+    );
     return (
-      <Grid container className={classes.UserSettings} spacing={3}>
-        <Grid item xs={6}>
-          <Heading link="something.com">General information</Heading>
-          <form
-            onSubmit={event => this.submitInfoHandler(event)}
-            className={classes.Form}
-          >
-            <Grid container>{formElements}</Grid>
-            <Button addClass="Form" type="disabled">
-              Save
-            </Button>
-          </form>
-        </Grid>
-        <Grid item xs={3}>
-          <Heading>Security</Heading>
-          <form
-            onSubmit={event => this.submitSecurityHandler(event)}
-            className={classes.Form}
-          >
-            <Grid container>{securityElements}</Grid>
-            <Button addClass="Form" type="disabled">
-              Save
-            </Button>
-          </form>
-        </Grid>
-      </Grid>
+      <GridPosition
+        two
+        center={{ xs: 7 }}
+        right={{ xs: 4 }}
+        content={content}
+        addContent={addContent}
+      />
     );
   }
 }
 
+// const oldCode = (
+//     <Grid container className={classes.UserSettings}>
+//         <Grid item xs={6} padding="true">
+//           <form
+//             onSubmit={event => this.submitInfoHandler(event)}
+//             className={classes.Form}
+//           >
+//             <Grid container>
+//               <Grid item xs={12}>
+//                 <Heading link="something.com">General information</Heading>
+//               </Grid>
+//               {formElements}
+//               <Grid item xs={12}>
+//                 <Button addClass="Form" type="disabled">
+//                   Save
+//                 </Button>
+//               </Grid>
+//             </Grid>
+//           </form>
+//         </Grid>
+//         <Grid item xs={3}>
+//           <Heading>Security</Heading>
+//           <form
+//             onSubmit={event => this.submitSecurityHandler(event)}
+//             className={classes.Form}
+//           >
+//             <Grid container>
+//               {securityElements}
+//               <Grid item xs={12}>
+//                 <Button addClass="Form" type="disabled">
+//                   Save
+//                 </Button>
+//               </Grid>
+//             </Grid>
+//           </form>
+//         </Grid>
+//       </Grid>
+// );
 export default UserSettings;

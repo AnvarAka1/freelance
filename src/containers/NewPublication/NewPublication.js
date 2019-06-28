@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
+import Grid from "../../components/Grid/Grid";
 import Heading from "../../components/Heading/Heading";
 import InputLabel from "../../components/UI/InputLabel/InputLable";
 import Button from "../../components/UI/Button/Button";
+import GridPosition from "../../components/Grid/GridPosition/GridPosition";
 import classes from "./NewPublication.module.css";
 
 class NewPublication extends Component {
@@ -265,7 +266,7 @@ class NewPublication extends Component {
       return (
         <Grid
           item
-          key={formElement.config.id}
+          key={formElement.id}
           {...formElement.config.grid}
           style={{ padding: "0 15px" }}
         >
@@ -282,28 +283,58 @@ class NewPublication extends Component {
         </Grid>
       );
     });
-    return (
-      <Grid container className={classes.NewPublication}>
+
+    const content = (
+      <React.Fragment>
         <Grid item xs={12}>
           <Heading>New publication</Heading>
         </Grid>
-        <Grid item xs={6}>
-          <form onSubmit={event => this.submitInfoHandler(event)}>
-            <Grid container>
-              {formElements}
-              <Grid item lg={4}>
-                <div className={classes.FormButton}>
-                  <Button type="disabled" addClass="Form">
-                    Upload
-                  </Button>
-                </div>
-              </Grid>
+        <form
+          style={{ width: "100%" }}
+          onSubmit={event => this.submitInfoHandler(event)}
+        >
+          <Grid container>
+            {formElements}
+            <Grid item lg={4}>
+              <div className={classes.FormButton}>
+                <Button type="disabled" addClass="Form">
+                  Upload
+                </Button>
+              </div>
             </Grid>
-          </form>
-        </Grid>
-      </Grid>
+          </Grid>
+        </form>
+      </React.Fragment>
     );
+
+    return <GridPosition one center={{ xs: 7 }} content={content} />;
   }
 }
 
+// const oldCode=(
+//   <Grid container className={classes.NewPublication}>
+//         <Grid item xs={6} noPadding="false">
+//           <Grid container>
+//             <Grid item xs={12}>
+//               <Heading>New publication</Heading>
+//             </Grid>
+//             <form
+//               style={{ width: "100%" }}
+//               onSubmit={event => this.submitInfoHandler(event)}
+//             >
+//               <Grid container>
+//                 {formElements}
+//                 <Grid item lg={4}>
+//                   <div className={classes.FormButton}>
+//                     <Button type="disabled" addClass="Form">
+//                       Upload
+//                     </Button>
+//                   </div>
+//                 </Grid>
+//               </Grid>
+//             </form>
+//           </Grid>
+//         </Grid>
+//       </Grid>
+// );
 export default NewPublication;
