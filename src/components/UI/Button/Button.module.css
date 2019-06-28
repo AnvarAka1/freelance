@@ -1,5 +1,5 @@
 .Button {
-    padding: 0 15px;
+    text-align: right;
     width: 100%;
     box-sizing: border-box
 }
@@ -42,4 +42,28 @@
 .Form {
     width: 190px;
     margin-top: 15px
+}
+
+.AddProject {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.AddProject,
+.AddProject button {
+    color: #00B1EB;
+    background: transparent;
+
+
+}
+
+.AddProject button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Topbar from "../../components/Navigation/Topbar/Topbar";
-import Grid from "@material-ui/core/Grid";
+import Grid from "../../components/Grid/Grid";
 import Person from "../../components/Person/Person";
 import Photo from "../../assets/photo.png";
 import BreadCrumbs from "../../components/UI/BreadCrumbs/BreadCrumbs";

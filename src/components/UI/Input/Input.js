@@ -39,7 +39,7 @@ const input = props => {
       break;
     case "select":
       const options = props.elementConfig.options.map(option => {
-        return <option>{option}</option>;
+        return <option key={option}>{option}</option>;
       });
       inputField = (
         <select

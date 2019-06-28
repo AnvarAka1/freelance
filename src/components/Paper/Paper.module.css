@@ -1,0 +1,10 @@
+.Paper {
+    margin-bottom: 30px;
+    padding: 15px 25px 15px 15px;
+    box-shadow: 0 0 10px #E5E5E5;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    height: 170px;
+
+}
