@@ -1,7 +1,7 @@
 import React from "react";
 import Paper from "../../Paper/Paper";
 import Lable from "../../UI/Lable/Lable";
-import classes from "./Project.module.css";
+// import classes from "./Project.module.css";
 import Heading from "../../Heading/Heading";
 import Button from "../../UI/Button/Button";
 const project = props => {

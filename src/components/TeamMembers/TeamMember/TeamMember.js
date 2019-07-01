@@ -2,12 +2,36 @@ import React from "react";
 import classes from "./TeamMember.module.css";
 import Lable from "../../UI/Lable/Lable";
 import PersonPhoto from "../../Person/PersonPhoto/PersonPhoto";
-import Heading from "../../Heading/Heading";
+import ControlButtons from "../../ControlButtons/ControlButtons";
+import Person from "../../Person/Person";
 const teamMember = props => {
+  const buttons = [
+    {
+      content: "Rate",
+      clicked: props.rated,
+      style: {
+        color: "#777777"
+      }
+    },
+    {
+      content: "Remove",
+      clicked: props.removed,
+      style: "#EA3333"
+    }
+  ];
+  const controlButtons = props.isEditable ? (
+    <ControlButtons buttons={buttons} />
+  ) : null;
   return (
     <div className={classes.TeamMember}>
-      <Heading>{props.heading}</Heading>
-      <PersonPhoto src={props.image} />
+      <Person
+        type="Inline"
+        photo={props.photo}
+        profile={props.profile}
+        circle
+        team
+      />
+      {controlButtons}
     </div>
   );
 };
