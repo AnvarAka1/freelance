@@ -6,10 +6,58 @@ import Photo from "../../assets/photo.png";
 import BreadCrumbs from "../../components/UI/BreadCrumbs/BreadCrumbs";
 import Footer from "../../components/Footer/Footer";
 import classes from "./Layout.module.css";
+import Photo1 from "../../assets/photo1.png";
 // import { Switch, Router } from "react-router-dom";
 // Needs to be converted to functional component and use REDUX for handling the state
 class Layout extends Component {
   state = {
+    user: {
+      photo: Photo,
+      name: "John Doe",
+      position: "Unitel Ltd. / Manager",
+      description:
+        "This job entailed communicating with various consumers, giving solid information about company",
+      isUser: true
+    },
+    worker: {
+      photo: Photo1,
+      name: "Miyah Miles",
+      position: "Front-end developer",
+      rating: "4.5/5.0",
+      description:
+        "I worked at the PCAD convention downtown Toronto for two consecutive years representing CanAlaska...",
+      skills: [
+        {
+          id: 1,
+          name: "Web-development"
+        },
+        {
+          id: 2,
+          name: "Front-end"
+        },
+        {
+          id: 3,
+          name: "Back-end"
+        },
+        {
+          id: 4,
+          name: "Design"
+        },
+        {
+          id: 5,
+          name: "UI/UX"
+        },
+        {
+          id: 6,
+          name: "Mobile Applications"
+        },
+        {
+          id: 7,
+          name: "iOS"
+        }
+      ],
+      isUser: false
+    },
     touched: false,
     drawerOpened: {
       right: false
@@ -58,6 +106,8 @@ class Layout extends Component {
         name: "Path"
       }
     ];
+
+    const viewProfile = this.props.isUser ? this.state.user : this.state.worker;
     return (
       <React.Fragment>
         <Topbar
@@ -65,6 +115,8 @@ class Layout extends Component {
           drawerToggle={this.drawerToggleHandler}
           touched={this.state.touched}
           searchButtonClicked={this.searchButtonHandler}
+          profilePhoto={this.state.user.photo}
+          alt={this.state.user.name}
         />
         {/*  
           redux state => all can see public(global)
@@ -81,7 +133,7 @@ class Layout extends Component {
               <BreadCrumbs crumbs={crumbs} />
             </Grid>
             <Grid item xs={2}>
-              <Person isUser={true} image={Photo} />
+              <Person profile={viewProfile} />
             </Grid>
             <Grid item xs={10}>
               <main onClick={event => this.searchButtonHandler(event, false)}>

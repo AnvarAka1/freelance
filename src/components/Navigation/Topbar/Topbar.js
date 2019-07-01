@@ -41,7 +41,7 @@ const topbar = props => {
               />
             </Grid>
             <Grid item lg={2} md={3} sm={3} xs={2}>
-              <NotificationItems />
+              <NotificationItems photo={props.profilePhoto} alt={props.alt} />
             </Grid>
 
             <Hidden mdUp>
