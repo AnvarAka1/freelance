@@ -67,3 +67,8 @@
     font-weight: bold;
     font-size: 18px;
 }
+
+.Center {
+    width: 190px;
+    display: inline-block;
+}

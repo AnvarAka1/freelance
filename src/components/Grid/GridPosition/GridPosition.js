@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "../Grid";
-import classes from "./GridPosition.module.css";
+// import classes from "./GridPosition.module.css";
 
 const gridPosition = props => {
   const gridItems = {

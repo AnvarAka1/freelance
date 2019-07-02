@@ -1,6 +1,6 @@
 import React from "react";
 import Project from "./Project/Project";
-import classes from "./Projects.module.css";
+// import classes from "./Projects.module.css";
 import Heading from "../Heading/Heading";
 import Grid from "../Grid/Grid";
 const projects = props => {

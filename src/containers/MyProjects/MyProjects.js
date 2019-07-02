@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-import Paper from "../../components/Paper/Paper";
-import Grid from "../../components/Grid/Grid";
-import Heading from "../../components/Heading/Heading";
-import Lable from "../../components/UI/Lable/Lable";
 import Projects from "../../components/Projects/Projects";
 import GridPosition from "../../components/Grid/GridPosition/GridPosition";
 class MyProjects extends Component {

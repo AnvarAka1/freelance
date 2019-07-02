@@ -25,3 +25,11 @@
 .NoMargin .Name {
     margin: 0;
 }
+
+.Info {
+    float: left
+}
+
+.InfoDesc {
+    width: 100%;
+}

@@ -257,6 +257,7 @@ class UserSettings extends Component {
     console.log("Security is submitted");
   };
   render() {
+    console.log("[UserSettings] props.history:", this.props.history);
     const formArray = [];
     const securityArray = [];
     for (let key in this.state.form) {

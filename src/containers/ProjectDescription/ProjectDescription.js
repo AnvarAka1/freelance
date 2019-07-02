@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Projects from "../../components/Projects/Projects";
-import Grid from "../../components/Grid/Grid";
+// import Grid from "../../components/Grid/Grid";
 import GridPosition from "../../components/Grid/GridPosition/GridPosition";
-import classes from "./ProjectDescription.module.css";
+// import classes from "./ProjectDescription.module.css";
 import TeamMembers from "../../components/TeamMembers/TeamMembers";
 import Photo1 from "../../assets/photo.png";
 import Photo2 from "../../assets/photo1.png";

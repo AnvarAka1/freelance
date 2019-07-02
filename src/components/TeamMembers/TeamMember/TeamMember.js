@@ -1,10 +1,11 @@
 import React from "react";
 import classes from "./TeamMember.module.css";
-import Lable from "../../UI/Lable/Lable";
-import PersonPhoto from "../../Person/PersonPhoto/PersonPhoto";
+// import Lable from "../../UI/Lable/Lable";
+// import PersonPhoto from "../../Person/PersonPhoto/PersonPhoto";
 import ControlButtons from "../../ControlButtons/ControlButtons";
 import Person from "../../Person/Person";
 const teamMember = props => {
+  console.log("[TeamMember.js] info =", props.info);
   const buttons = [
     {
       content: "Rate",
@@ -30,6 +31,7 @@ const teamMember = props => {
         profile={props.profile}
         circle
         team
+        info={props.info}
       />
       {controlButtons}
     </div>
