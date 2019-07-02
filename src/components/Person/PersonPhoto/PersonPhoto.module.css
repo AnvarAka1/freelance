@@ -20,3 +20,13 @@
 .CirclePhoto img {
     border-radius: 50%;
 }
+
+.Info {
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+.Info img {
+    border-radius: 50%;
+}

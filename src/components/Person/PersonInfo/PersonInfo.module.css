@@ -21,3 +21,15 @@
     font-size: 14px;
     color: #333333
 }
+
+.NoMargin .Name {
+    margin: 0;
+}
+
+.Info {
+    float: left
+}
+
+.InfoDesc {
+    width: 100%;
+}

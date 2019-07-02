@@ -6,6 +6,7 @@ const button = props => {
   let buttonHolder = !props.addProject ? (
     <button
       onClick={props.clicked}
+      disabled={props.disabled}
       className={[
         classes.ButtonWrapper,
         classes[props.type],
@@ -16,7 +17,11 @@ const button = props => {
       {props.children}
     </button>
   ) : (
-    <button onClick={props.clicked} style={props.style}>
+    <button
+      onClick={props.clicked}
+      disabled={props.disabled}
+      style={props.style}
+    >
       {props.children}
     </button>
   );
@@ -25,6 +30,7 @@ const button = props => {
     <div
       className={[
         classes.Button,
+        classes[props.container],
         props.addProject ? classes.AddProject : null
       ].join(" ")}
     >
