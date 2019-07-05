@@ -5,6 +5,7 @@ import classes from "./UserSettings.module.css";
 import Button from "../../components/UI/Button/Button";
 import Grid from "../../components/Grid/Grid";
 import GridPosition from "../../components/Grid/GridPosition/GridPosition";
+import axios from "axios";
 class UserSettings extends Component {
   state = {
     form: {
@@ -217,6 +218,20 @@ class UserSettings extends Component {
     formIsValid: false,
     securityFormIsValid: false
   };
+  // componentDidMount() {
+  //   axios
+  //     .get("mp.json")
+  //     .then(res => {
+  //       console.log(res.data);
+  //     })
+  //     .catch(err => {
+  //       console.log(err.data);
+  //     });
+  // }
+  jsonCreator() {
+    const jsonFile = JSON.stringify(this.state);
+    console.log("[UserSettings]", jsonFile);
+  }
 
   inputChangedHandler = (event, id, type) => {
     switch (type) {
@@ -257,7 +272,8 @@ class UserSettings extends Component {
     console.log("Security is submitted");
   };
   render() {
-    console.log("[UserSettings] props.history:", this.props.history);
+    // this.jsonCreator();
+    // console.log("[UserSettings] props.history:", this.props.history);
     const formArray = [];
     const securityArray = [];
     for (let key in this.state.form) {
