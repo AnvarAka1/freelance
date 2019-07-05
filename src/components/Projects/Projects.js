@@ -4,20 +4,23 @@ import Project from "./Project/Project";
 import Heading from "../Heading/Heading";
 import Grid from "../Grid/Grid";
 const projects = props => {
-  const projectsArray = [];
-  for (let key in props.projects) {
-    projectsArray.push({ id: key, projectInfo: props.projects[key] });
-  }
-  const projects = projectsArray.map(project => {
+  const projects = props.projects.map(project => {
     return (
-      <Grid item key={project.id} {...project.projectInfo.grid}>
+      <Grid
+        item
+        key={project.id}
+        onClick={() => props.clicked(project.id, project.button)}
+        {...project.grid}
+      >
         <Project
           overflow={props.overflow}
-          project={project.projectInfo.project}
-          content={project.projectInfo.content}
-          date={project.projectInfo.date}
-          addProject={project.projectInfo.button}
-          clicked={props.clicked}
+          project={project.project}
+          content={project.content}
+          date={project.date}
+          addProject={project.button}
+          clicked={() => {
+            console.log("Hey!");
+          }}
         />
       </Grid>
     );
@@ -25,9 +28,11 @@ const projects = props => {
   return (
     <React.Fragment>
       <Grid item xs={12}>
-        <Heading {...props.heading} big>
-          {props.heading.name}
-        </Heading>
+        {props.heading ? (
+          <Heading {...props.heading} big>
+            {props.heading.name}
+          </Heading>
+        ) : null}
       </Grid>
       {projects}
     </React.Fragment>

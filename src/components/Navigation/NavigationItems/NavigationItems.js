@@ -9,8 +9,8 @@ const navigationItems = props => {
 
   const navigationList = [
     { name: "FEED", link: "/feed" },
-    { name: "FREELANCERS", link: "freelancers" },
-    { name: "DASHBOARD", link: "dashboard" }
+    { name: "FREELANCERS", link: "/freelancers" },
+    { name: "DASHBOARD", link: "/dashboard" }
   ].map(navigation => {
     return (
       <NavigationItem

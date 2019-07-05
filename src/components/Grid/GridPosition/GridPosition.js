@@ -33,17 +33,17 @@ const gridPosition = props => {
   }
   const position = props.two ? gridItems.two : gridItems.one;
   let gridItem = (
-    <Grid item {...position.center} noPadding="true">
+    <Grid item {...position.center} nopadding="true">
       <Grid container>{props.content}</Grid>
     </Grid>
   );
   if (props.two) {
     gridItem = (
       <React.Fragment>
-        <Grid item {...position.center} noPadding="true">
+        <Grid item {...position.center} nopadding="true">
           <Grid container>{props.content}</Grid>
         </Grid>
-        <Grid item {...position.right} noPadding="true">
+        <Grid item {...position.right} nopadding="true">
           <Grid container>{props.addContent}</Grid>
         </Grid>
       </React.Fragment>

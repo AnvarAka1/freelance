@@ -5,7 +5,6 @@ import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import classes from "./BreadCrumbs.module.css";
 const breadCrumbs = props => {
-  console.log(props.crumbs);
   const crumbs = props.crumbs.map(crumb => {
     if (crumb.link) {
       return (
@@ -35,7 +34,6 @@ const breadCrumbs = props => {
     <Breadcrumbs
       className={[classes.BreadCrumbs, classes[props.type]].join(" ")}
     >
-      {console.log(classes.BreadCrumbs)}
       {crumbs}
     </Breadcrumbs>
   );

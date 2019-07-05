@@ -6,12 +6,12 @@ import Heading from "../../Heading/Heading";
 import Button from "../../UI/Button/Button";
 const project = props => {
   let proj = (
-    <React.Fragment>
+    <div>
       <Heading {...props} date={props.date}>
         {props.project}
       </Heading>
       <Lable {...props}>{props.content}</Lable>
-    </React.Fragment>
+    </div>
   );
 
   if (props.addProject) {

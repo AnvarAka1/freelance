@@ -5,7 +5,6 @@ import classes from "./TeamMember.module.css";
 import ControlButtons from "../../ControlButtons/ControlButtons";
 import Person from "../../Person/Person";
 const teamMember = props => {
-  console.log("[TeamMember.js] info =", props.info);
   const buttons = [
     {
       content: "Rate",
@@ -32,6 +31,7 @@ const teamMember = props => {
         circle
         team
         info={props.info}
+        clicked={props.clicked}
       />
       {controlButtons}
     </div>

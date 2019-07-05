@@ -5,7 +5,7 @@ import InputLabel from "../../components/UI/InputLabel/InputLable";
 import Button from "../../components/UI/Button/Button";
 import GridPosition from "../../components/Grid/GridPosition/GridPosition";
 import classes from "./NewPublication.module.css";
-
+import axios from "axios";
 class NewPublication extends Component {
   state = {
     form: {
@@ -242,6 +242,20 @@ class NewPublication extends Component {
     },
     formIsValid: false
   };
+  // componentDidMount() {
+  //   axios
+  //     .get("np.json")
+  //     .then(res => {
+  //       console.log(res.data);
+  //     })
+  //     .catch(err => {
+  //       console.log(err.data);
+  //     });
+  // }
+  jsonCreator() {
+    const jsonFile = JSON.stringify(this.state);
+    console.log("[New Publication]", jsonFile);
+  }
   inputChangedHandler = (event, id) => {
     const updatedForm = {
       ...this.state.form
@@ -255,9 +269,9 @@ class NewPublication extends Component {
   };
   submitInfoHandler = event => {
     event.preventDefault();
-    console.log("Info is submitted");
   };
   render() {
+    // this.jsonCreator();
     const formElementsArray = [];
     for (let key in this.state.form) {
       formElementsArray.push({ id: key, config: this.state.form[key] });
@@ -311,30 +325,4 @@ class NewPublication extends Component {
   }
 }
 
-// const oldCode=(
-//   <Grid container className={classes.NewPublication}>
-//         <Grid item xs={6} noPadding="false">
-//           <Grid container>
-//             <Grid item xs={12}>
-//               <Heading>New publication</Heading>
-//             </Grid>
-//             <form
-//               style={{ width: "100%" }}
-//               onSubmit={event => this.submitInfoHandler(event)}
-//             >
-//               <Grid container>
-//                 {formElements}
-//                 <Grid item lg={4}>
-//                   <div className={classes.FormButton}>
-//                     <Button type="disabled" addClass="Form">
-//                       Upload
-//                     </Button>
-//                   </div>
-//                 </Grid>
-//               </Grid>
-//             </form>
-//           </Grid>
-//         </Grid>
-//       </Grid>
-// );
 export default NewPublication;

@@ -4,7 +4,6 @@ import PersonDescription from "./PersonDescription/PersonDescription";
 import Skills from "../Skills/Skills";
 import classes from "./PersonInfo.module.css";
 const personInfo = props => {
-  console.log("[PersonInfo.js] info =", props.info);
   const personInfoClasses = [classes.PersonInfo];
   let person = null;
   if (props.team && !props.info) {
@@ -22,8 +21,12 @@ const personInfo = props => {
         <h4 className={classes.Grey}>{props.profile.position}</h4>
         <h3 className={classes.Grey}>Rating: {props.profile.rating}</h3>
         <PersonDescription description={props.profile.description} />
-        <Button>Invite for Project</Button>
-        <Button type="white" style={{ margin: "10px 0" }}>
+        <Button clicked={props.inviteClicked}>Invite for Project</Button>
+        <Button
+          clicked={props.contactClicked}
+          type="white"
+          style={{ margin: "10px 0" }}
+        >
           Get Contact
         </Button>
         <Skills skills={props.profile.skills}>Skills</Skills>
@@ -35,7 +38,7 @@ const personInfo = props => {
         <h3 className={classes.Name}>{props.profile.name}</h3>
         <h4 className={classes.Grey}>{props.profile.position}</h4>
         <PersonDescription description={props.profile.description} />
-        <Button>Edit Profile</Button>
+        <Button clicked={props.editClicked}>Edit Profile</Button>
       </React.Fragment>
     );
   } else if (props.profile.skills && props.info) {

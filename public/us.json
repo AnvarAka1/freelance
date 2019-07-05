@@ -1,0 +1,210 @@
+{
+    "form": {
+        "name": {
+            "lable": "first name",
+            "input": "input",
+            "elementConfig": {
+                "placeholder": "John",
+                "type": "text"
+            },
+            "value": "",
+            "validation": {
+                "required": true,
+                "minLetters": 2,
+                "maxLetters": 20
+            },
+            "grid": {
+                "xs": 12,
+                "sm": 12,
+                "md": 12,
+                "lg": 6
+            },
+            "valid": false
+        },
+        "surname": {
+            "lable": "Surname",
+            "input": "input",
+            "elementConfig": {
+                "placeholder": "Doe",
+                "type": "text"
+            },
+            "value": "",
+            "validation": {
+                "required": true,
+                "minLetters": 2,
+                "maxLetters": 20
+            },
+            "grid": {
+                "xs": 12,
+                "sm": 12,
+                "md": 12,
+                "lg": 6
+            },
+            "valid": false
+        },
+        "description": {
+            "lable": "Description",
+            "input": "textarea",
+            "elementConfig": {
+                "placeholder": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                "type": "text"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "grid": {
+                "xs": 12,
+                "sm": 12,
+                "md": 12,
+                "lg": 12
+            },
+            "valid": false
+        },
+        "company": {
+            "lable": "Company",
+            "input": "input",
+            "elementConfig": {
+                "placeholder": "Unitel Ltd.",
+                "type": "text"
+            },
+            "value": "",
+            "validation": {
+                "required": true,
+                "minLetters": 2,
+                "maxLetters": 20
+            },
+            "grid": {
+                "xs": 12,
+                "sm": 12,
+                "md": 12,
+                "lg": 6
+            },
+            "valid": false
+        },
+        "position": {
+            "lable": "Position",
+            "input": "input",
+            "elementConfig": {
+                "placeholder": "Manager",
+                "type": "text"
+            },
+            "value": "",
+            "validation": {
+                "required": true,
+                "minLetters": 2,
+                "maxLetters": 20
+            },
+            "grid": {
+                "xs": 12,
+                "sm": 12,
+                "md": 12,
+                "lg": 6
+            },
+            "valid": false
+        },
+        "number": {
+            "lable": "Phone number",
+            "input": "input",
+            "elementConfig": {
+                "placeholder": "Phone number",
+                "type": "text"
+            },
+            "value": "",
+            "validation": {
+                "required": true,
+                "minLetters": 2,
+                "maxLetters": 20
+            },
+            "grid": {
+                "xs": 12,
+                "sm": 12,
+                "md": 12,
+                "lg": 6
+            },
+            "valid": false
+        },
+        "mail": {
+            "lable": "E-mail",
+            "input": "input",
+            "elementConfig": {
+                "placeholder": "johndoe@mail.com",
+                "type": "email"
+            },
+            "value": "",
+            "validation": {
+                "required": true,
+                "minLetters": 2,
+                "maxLetters": 20
+            },
+            "grid": {
+                "xs": 12,
+                "sm": 12,
+                "md": 12,
+                "lg": 6
+            },
+            "valid": false
+        }
+    },
+    "securityForm": {
+        "curPass": {
+            "lable": "Current password",
+            "input": "input",
+            "elementConfig": {
+                "placeholder": "••••••",
+                "type": "password"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "grid": {
+                "xs": 12,
+                "sm": 12,
+                "md": 12,
+                "lg": 12
+            },
+            "valid": false
+        },
+        "newPass": {
+            "lable": "New password",
+            "input": "input",
+            "elementConfig": {
+                "placeholder": "••••••",
+                "type": "password"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "grid": {
+                "xs": 12,
+                "sm": 12,
+                "md": 12,
+                "lg": 12
+            },
+            "valid": false
+        },
+        "ConfirmPass": {
+            "lable": "Confirm password",
+            "input": "input",
+            "elementConfig": {
+                "placeholder": "••••••",
+                "type": "password"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "grid": {
+                "xs": 12,
+                "sm": 12,
+                "md": 12,
+                "lg": 12
+            },
+            "valid": false
+        }
+    },
+    "formIsValid": false,
+    "securityFormIsValid": false
+}

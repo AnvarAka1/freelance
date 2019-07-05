@@ -6,7 +6,7 @@ const navigationItem = props => {
   props.sideDrawer
     ? navigationClass.push(classes.LiSideDrawer)
     : navigationClass.push(classes.Li);
-  console.log(props.sideDrawer);
+
   return (
     <li className={navigationClass.join(" ")}>
       <NavLink to={props.link}>{props.children}</NavLink>

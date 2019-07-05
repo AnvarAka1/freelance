@@ -1,0 +1,43 @@
+{
+    "menus": [{
+        "id": 1,
+        "button": "Projects",
+        "link": "/Projects",
+        "grid": {
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6
+        }
+    }, {
+        "id": 2,
+        "button": "Messages",
+        "link": "/Messages",
+        "grid": {
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6
+        }
+    }, {
+        "id": 3,
+        "button": "Notifications",
+        "link": "/Notifications",
+        "grid": {
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6
+        }
+    }, {
+        "id": 4,
+        "button": "Settings",
+        "link": "/Settings",
+        "grid": {
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 6
+        }
+    }]
+}
