@@ -6,6 +6,9 @@ import GridPosition from "../../components/Grid/GridPosition/GridPosition";
 import TeamMembers from "../../components/TeamMembers/TeamMembers";
 import Photo1 from "../../assets/photo.png";
 import Photo2 from "../../assets/photo1.png";
+import * as actions from "../../store/actions/index";
+import ProjectShort from "../../components/ProjectShort/ProjectShort";
+import { connect } from "react-redux";
 class ProjectDescription extends Component {
   state = {
     heading: {
@@ -13,6 +16,36 @@ class ProjectDescription extends Component {
       isProject: true,
       link: null
     },
+    skills: [
+      {
+        id: 1,
+        name: "Web-development"
+      },
+      {
+        id: 2,
+        name: "Front-end"
+      },
+      {
+        id: 3,
+        name: "Back-end"
+      },
+      {
+        id: 4,
+        name: "Design"
+      },
+      {
+        id: 5,
+        name: "UI/UX"
+      },
+      {
+        id: 6,
+        name: "Mobile Applications"
+      },
+      {
+        id: 7,
+        name: "iOS"
+      }
+    ],
     projects: [
       {
         id: 3,
@@ -44,25 +77,40 @@ class ProjectDescription extends Component {
         position: "UI/UX Designer",
         photo: Photo1
       }
-    ]
+    ],
+    isUser: true,
+    shouldChange: false
   };
+  componentDidMount() {
+    if (this.state.shouldChange) {
+      // axios.get(user)
+      this.setState({ shouldChange: false });
+    }
+  }
+  user() {
+    console.log("isUser = ", this.props.isUser);
+
+    if (this.state.isUser !== this.props.isUser) {
+      this.props.onUserChanged();
+      this.setState({ shouldChange: true });
+    }
+  }
   jsonCreator() {
     const jsonFile = JSON.stringify(this.state);
     console.log("[ProjectDescription]", jsonFile);
   }
-  componentDidMount() {
-    //get state
-    console.log(this.props.history.search);
-  }
+
   memberHandler = id => {
     console.log("[Project Description] Member clicked with id =", id);
   };
 
   render() {
+    this.user();
     console.log(this.props.history);
     const projects = (
       <React.Fragment>
         <Projects
+          noHover
           heading={this.state.heading}
           clicked={() => {
             return;
@@ -70,15 +118,34 @@ class ProjectDescription extends Component {
           projects={this.state.projects}
         />
         <TeamMembers
+          // isPaper
+          heading="Members"
+          style={{
+            marginBottom: "10px",
+            padding: "10px 25px 10px 15px"
+          }}
+          isSeparated
           isEditable
-          memberhandler={this.memberHandler}
+          clicked={this.memberHandler}
           members={this.state.members}
         />
       </React.Fragment>
     );
-
-    return <GridPosition two content={projects} addContent={null} />;
+    const addContent = <ProjectShort skills={this.state.skills} />;
+    return <GridPosition two content={projects} addContent={addContent} />;
   }
 }
-
-export default ProjectDescription;
+const mapStateToProps = state => {
+  return {
+    isUser: state.user.isUser
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onUserChanged: () => dispatch(actions.userChanged())
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProjectDescription);

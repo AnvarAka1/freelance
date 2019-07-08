@@ -1,5 +1,17 @@
 .TeamMember {
     /* border-bottom: 1px solid; */
-    padding: 3px 30px 10px 15px;
-    box-shadow: 0 1px 0 #E5E5E5
+    /* padding: 3px 30px 10px 15px; */
+    /* box-shadow: 0 1px 0 #E5E5E5; */
+    transition: 0.5s ease background-color;
+    cursor: pointer;
+}
+
+/* 
+.TeamMember:hover {
+    background-color: #e0e0e0
+} */
+
+.TeamMemberDivided {
+    box-shadow: 0 1px 0 #E5E5E5;
+    padding: 5px 0
 }

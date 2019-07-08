@@ -16,7 +16,7 @@ const person = props => {
       <div onClick={props.clicked} className={classes[props.type]}>
         <PersonPhoto
           circle={props.circle}
-          image={props.profile.photo}
+          profile={props.profile}
           team={props.team}
           info={props.info}
           loading={props.loading}

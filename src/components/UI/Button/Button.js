@@ -3,6 +3,7 @@ import React from "react";
 import classes from "./Button.module.css";
 
 const button = props => {
+  const { styleAttr } = props;
   let buttonHolder = !props.addProject ? (
     <button
       onClick={props.clicked}
@@ -26,6 +27,7 @@ const button = props => {
     </button>
   );
 
+  console.log("Style = ", styleAttr);
   return (
     <div
       className={[

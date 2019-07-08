@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import Topbar from "../../components/Navigation/Topbar/Topbar";
 import Grid from "../../components/Grid/Grid";
 import Person from "../../components/Person/Person";
-import Photo from "../../assets/photo.png";
+// import Photo from "../../assets/photo.png";
 import BreadCrumbs from "../../components/UI/BreadCrumbs/BreadCrumbs";
 import Footer from "../../components/Footer/Footer";
 import classes from "./Layout.module.css";
-import Spinner from "../../components/UI/Spinner/Spinner";
+// import Spinner from "../../components/UI/Spinner/Spinner";
 // import Photo1 from "../../assets/photo1.png";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import axios from "axios";
 // Needs to be converted to functional component and use REDUX for handling the state
 class Layout extends Component {
@@ -105,17 +106,14 @@ class Layout extends Component {
     }
     return (
       <React.Fragment>
-        {this.state.user ? (
-          <Topbar
-            drawerOpened={this.state.drawerOpened}
-            drawerToggle={this.drawerToggleHandler}
-            touched={this.state.touched}
-            searchButtonClicked={this.searchButtonHandler}
-            profilePhoto={this.state.user.photo}
-            alt={this.state.user.name}
-            loading={this.state.loading}
-          />
-        ) : null}
+        <Topbar
+          drawerOpened={this.state.drawerOpened}
+          drawerToggle={this.drawerToggleHandler}
+          touched={this.state.touched}
+          searchButtonClicked={this.searchButtonHandler}
+          profile={this.state.user}
+          loading={this.state.loading}
+        />
 
         {/*  
           redux state => all can see public(global)
@@ -132,15 +130,13 @@ class Layout extends Component {
               <BreadCrumbs crumbs={crumbs} />
             </Grid>
             <Grid item xs={2}>
-              {this.state.user ? (
-                <Person
-                  editClicked={() => this.clickHandler("/settings")}
-                  inviteClicked={() => this.clickHandler("/invite")}
-                  contactClicked={() => this.clickHandler("/contact")}
-                  profile={viewProfile}
-                  loading={this.state.loading}
-                />
-              ) : null}
+              <Person
+                editClicked={() => this.clickHandler("/settings")}
+                inviteClicked={() => this.clickHandler("/invite")}
+                contactClicked={() => this.clickHandler("/contact")}
+                profile={viewProfile}
+                loading={this.state.loading}
+              />
             </Grid>
             <Grid item xs={10}>
               {content}
@@ -152,4 +148,14 @@ class Layout extends Component {
     );
   }
 }
-export default Layout;
+const mapStateToProps = state => {
+  return {
+    isUser: state.user.isUser
+  };
+};
+// const mapDispatchToProps = dispatch => {
+//   return {
+
+//   }
+// }
+export default connect(mapStateToProps)(Layout);

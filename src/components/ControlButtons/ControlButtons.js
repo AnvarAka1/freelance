@@ -5,13 +5,12 @@ import ControlButton from "./ControlButton/ControlButton";
 const controlButtons = props => {
   const controlButtonsList = props.buttons.map(button => {
     return (
-      <ControlButton
-        key={button.content}
-        clicked={button.clicked}
-        // style={button.style}
-      >
-        {button.content}
-      </ControlButton>
+      <React.Fragment key={button.content}>
+        <ControlButton clicked={button.clicked} styleAttr={button.style}>
+          {button.content}
+        </ControlButton>
+        {button.hasLine ? <span className={classes.VLine}>|</span> : null}
+      </React.Fragment>
     );
   });
   return <div className={classes.ControlButtons}>{controlButtonsList}</div>;

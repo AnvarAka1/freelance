@@ -13,11 +13,14 @@ const projects = props => {
         {...project.grid}
       >
         <Project
+          noHover={props.noHover}
+          autoHeightLable={props.autoHeightLable}
           overflow={props.overflow}
           project={project.project}
           content={project.content}
           date={project.date}
           addProject={project.button}
+          autoHeight={props.autoHeight}
           clicked={() => {
             console.log("Hey!");
           }}

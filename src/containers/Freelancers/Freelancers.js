@@ -3,14 +3,52 @@ import React, { Component } from "react";
 import GridPosition from "../../components/Grid/GridPosition/GridPosition";
 // import Grid from "../../components/Grid/Grid";
 import TeamMembers from "../../components/TeamMembers/TeamMembers";
-import Photo1 from "../../assets/photo.png";
-import Photo2 from "../../assets/photo1.png";
+// import Photo1 from "../../assets/photo.png";
+// import Photo2 from "../../assets/photo1.png";
+import Filter from "../../components/Filter/Filter";
 import axios from "axios";
+import * as actions from "../../store/actions/index";
+import Heading from "../../components/Heading/Heading";
+import { connect } from "react-redux";
+import Icon from "@material-ui/core/Icon";
 // import Button from "../../components/UI/Button/Button";
 class Freelancers extends Component {
   state = {
-    loading: false
+    skills: [
+      {
+        id: 1,
+        name: "Web-development"
+      },
+      {
+        id: 2,
+        name: "Front-end"
+      },
+      {
+        id: 3,
+        name: "Back-end"
+      },
+      {
+        id: 4,
+        name: "Design"
+      },
+      {
+        id: 5,
+        name: "UI/UX"
+      },
+      {
+        id: 6,
+        name: "Mobile Applications"
+      },
+      {
+        id: 7,
+        name: "iOS"
+      }
+    ],
+    loading: false,
+    isUser: true,
+    shouldChange: false
   };
+
   componentDidMount() {
     this.setState({ loading: true });
     axios
@@ -26,6 +64,20 @@ class Freelancers extends Component {
       .catch(err => {
         console.log(err.data);
       });
+
+    if (this.state.shouldChange) {
+      // axios.get(user)
+      this.setState({ shouldChange: false });
+    }
+  }
+
+  user() {
+    console.log("isUser = ", this.props.isUser);
+
+    if (this.state.isUser !== this.props.isUser) {
+      this.props.onUserChanged();
+      this.setState({ shouldChange: true });
+    }
   }
   jsonCreator() {
     const jsonFile = JSON.stringify(this.state);
@@ -35,17 +87,54 @@ class Freelancers extends Component {
     console.log("[Freelancers] memberHandler id =", id);
   };
 
+  filterHandler = id => {
+    let skills = this.state.skills.slice();
+    let indexFound;
+    const found = skills.find((element, index) => {
+      indexFound = index;
+      return id === element.id;
+    });
+    console.log("Found === " + found + " and index is " + indexFound);
+    skills[indexFound].isSelected = !skills[indexFound].isSelected;
+    this.setState({ skills: skills });
+    console.log(this.state.skills);
+  };
   render() {
+    this.user();
     // this.jsonCreator();
     const content = (
       <React.Fragment>
         <TeamMembers
-          memberhandler={this.memberHandler}
+          isSeparated
+          clicked={this.memberHandler}
           members={this.state.persons}
           info
           showbutton
           loading={this.state.loading}
         />
+      </React.Fragment>
+    );
+    const addContent = (
+      <React.Fragment>
+        <Heading
+          style={{
+            display: "flex",
+            alignItems: "flex-end"
+          }}
+        >
+          Filter
+          <Icon
+            style={{
+              fontSize: "14px",
+              marginLeft: "5px",
+              display: "inline-block",
+              paddingBottom: "5px"
+            }}
+          >
+            tune
+          </Icon>
+        </Heading>
+        <Filter skills={this.state.skills} clicked={this.filterHandler} />
       </React.Fragment>
     );
     return (
@@ -54,10 +143,22 @@ class Freelancers extends Component {
         content={content}
         center={{ xs: 10 }}
         right={{ xs: 2 }}
-        addContent={null}
+        addContent={addContent}
       />
     );
   }
 }
-
-export default Freelancers;
+const mapStateToProps = state => {
+  return {
+    isUser: state.user.isUser
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onUserChanged: () => dispatch(actions.userChanged())
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Freelancers);

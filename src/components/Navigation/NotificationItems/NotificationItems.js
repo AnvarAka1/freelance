@@ -13,12 +13,7 @@ const notificationItems = props => {
     <div className={classes.NotificationItems}>
       {notificationList}
       <Hidden smDown>
-        <PersonPhoto
-          circle
-          image={props.photo}
-          alt={props.alt}
-          loading={props.loading}
-        />
+        <PersonPhoto circle profile={props.profile} loading={props.loading} />
       </Hidden>
     </div>
   );
