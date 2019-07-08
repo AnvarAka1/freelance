@@ -4,6 +4,8 @@ import Projects from "../../components/Projects/Projects";
 // import Grid from "../../components/Grid/Grid";
 import GridPosition from "../../components/Grid/GridPosition/GridPosition";
 import axios from "axios";
+import * as actions from "../../store/actions/index";
+import { connect } from "react-redux";
 class Dashboard extends Component {
   state = {
     menus: [
@@ -51,7 +53,9 @@ class Dashboard extends Component {
           lg: 6
         }
       }
-    ]
+    ],
+    isUser: true,
+    shouldChange: false
   };
   componentDidMount() {
     axios
@@ -62,6 +66,19 @@ class Dashboard extends Component {
       .catch(err => {
         console.log(err.data);
       });
+    if (this.state.shouldChange) {
+      // axios.get(user)
+      this.setState({ shouldChange: false });
+    }
+  }
+
+  user() {
+    console.log("isUser = ", this.props.isUser);
+
+    if (this.state.isUser !== this.props.isUser) {
+      this.props.onUserChanged();
+      this.setState({ shouldChange: true });
+    }
   }
   jsonCreator() {
     const jsonFile = JSON.stringify(this.state);
@@ -82,10 +99,11 @@ class Dashboard extends Component {
         console.log("Menu ", menu.config.link);
         this.props.history.push(menu.config.link);
       }
+      return true;
     });
   };
   render() {
-    // this.jsonCreator();
+    this.user();
     const dashboard = (
       <Projects
         projects={this.state.menus}
@@ -96,5 +114,17 @@ class Dashboard extends Component {
     return <GridPosition one content={dashboard} />;
   }
 }
-
-export default Dashboard;
+const mapStateToProps = state => {
+  return {
+    isUser: state.user.isUser
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onUserChanged: () => dispatch(actions.userChanged())
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);

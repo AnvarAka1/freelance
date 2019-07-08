@@ -5,7 +5,9 @@ import classes from "./UserSettings.module.css";
 import Button from "../../components/UI/Button/Button";
 import Grid from "../../components/Grid/Grid";
 import GridPosition from "../../components/Grid/GridPosition/GridPosition";
-import axios from "axios";
+import * as actions from "../../store/actions/index";
+import { connect } from "react-redux";
+// import axios from "axios";
 class UserSettings extends Component {
   state = {
     form: {
@@ -216,7 +218,9 @@ class UserSettings extends Component {
       }
     },
     formIsValid: false,
-    securityFormIsValid: false
+    securityFormIsValid: false,
+    isUser: true,
+    shouldChange: false
   };
   // componentDidMount() {
   //   axios
@@ -228,6 +232,20 @@ class UserSettings extends Component {
   //       console.log(err.data);
   //     });
   // }
+  componentDidMount() {
+    if (this.state.shouldChange) {
+      // axios.get(user)
+      this.setState({ shouldChange: false });
+    }
+  }
+  user() {
+    console.log("isUser = ", this.props.isUser);
+
+    if (this.state.isUser !== this.props.isUser) {
+      this.props.onUserChanged();
+      this.setState({ shouldChange: true });
+    }
+  }
   jsonCreator() {
     const jsonFile = JSON.stringify(this.state);
     console.log("[UserSettings]", jsonFile);
@@ -272,8 +290,7 @@ class UserSettings extends Component {
     console.log("Security is submitted");
   };
   render() {
-    // this.jsonCreator();
-    // console.log("[UserSettings] props.history:", this.props.history);
+    this.user();
     const formArray = [];
     const securityArray = [];
     for (let key in this.state.form) {
@@ -351,6 +368,7 @@ class UserSettings extends Component {
         </form>
       </React.Fragment>
     );
+
     return (
       <GridPosition
         two
@@ -401,4 +419,17 @@ class UserSettings extends Component {
 //         </Grid>
 //       </Grid>
 // );
-export default UserSettings;
+const mapStateToProps = state => {
+  return {
+    isUser: state.user.isUser
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onUserChanged: () => dispatch(actions.userChanged())
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserSettings);

@@ -3,16 +3,16 @@ import classes from "./Heading.module.css";
 
 const heading = props => {
   const head = props.date ? (
-    <React.Fragment>
-      <h1>{props.children}</h1>
+    <div>
+      <h1 style={props.style}>{props.children}</h1>
       <p className={classes.Date}>{props.date}</p>
-    </React.Fragment>
+    </div>
   ) : (
-    <React.Fragment>
-      <h1>{props.children}</h1>
+    <div>
+      <h1 style={props.style}> {props.children}</h1>
       {props.isProject ? <p>project</p> : null}
       {props.link ? <a href="/">{props.link}</a> : null}
-    </React.Fragment>
+    </div>
   );
   const classHeading = [classes.Heading];
   if (props.big) {

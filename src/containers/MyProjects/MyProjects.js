@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Projects from "../../components/Projects/Projects";
 import GridPosition from "../../components/Grid/GridPosition/GridPosition";
 import axios from "axios";
+import * as actions from "../../store/actions/index";
+import { connect } from "react-redux";
 class MyProjects extends Component {
   state = {
     heading: {
@@ -56,7 +58,9 @@ class MyProjects extends Component {
           lg: 6
         }
       }
-    ]
+    ],
+    isUser: true,
+    shouldChange: false
   };
   componentDidMount() {
     axios
@@ -67,6 +71,19 @@ class MyProjects extends Component {
       .catch(err => {
         console.log(err.data);
       });
+    if (this.state.shouldChange) {
+      // axios.get(user)
+      this.setState({ shouldChange: false });
+    }
+  }
+
+  user() {
+    console.log("isUser = ", this.props.isUser);
+
+    if (this.state.isUser !== this.props.isUser) {
+      this.props.onUserChanged();
+      this.setState({ shouldChange: true });
+    }
   }
   jsonCreator() {
     const jsonFile = JSON.stringify(this.state);
@@ -83,7 +100,7 @@ class MyProjects extends Component {
     }
   };
   render() {
-    // this.jsonCreator();
+    this.user();
     const project = (
       <Projects
         heading={this.state.heading}
@@ -95,5 +112,17 @@ class MyProjects extends Component {
     return <GridPosition one content={project} />;
   }
 }
-
-export default MyProjects;
+const mapStateToProps = state => {
+  return {
+    isUser: state.user.isUser
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onUserChanged: () => dispatch(actions.userChanged())
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyProjects);

@@ -5,7 +5,9 @@ import InputLabel from "../../components/UI/InputLabel/InputLable";
 import Button from "../../components/UI/Button/Button";
 import GridPosition from "../../components/Grid/GridPosition/GridPosition";
 import classes from "./NewPublication.module.css";
-import axios from "axios";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
+// import axios from "axios";
 class NewPublication extends Component {
   state = {
     form: {
@@ -240,7 +242,9 @@ class NewPublication extends Component {
         valid: false
       }
     },
-    formIsValid: false
+    formIsValid: false,
+    isUser: true,
+    shouldChange: false
   };
   // componentDidMount() {
   //   axios
@@ -252,6 +256,20 @@ class NewPublication extends Component {
   //       console.log(err.data);
   //     });
   // }
+  componentDidMount() {
+    if (this.state.shouldChange) {
+      // axios.get(user)
+      this.setState({ shouldChange: false });
+    }
+  }
+  user() {
+    console.log("isUser = ", this.props.isUser);
+
+    if (this.state.isUser !== this.props.isUser) {
+      this.props.onUserChanged();
+      this.setState({ shouldChange: true });
+    }
+  }
   jsonCreator() {
     const jsonFile = JSON.stringify(this.state);
     console.log("[New Publication]", jsonFile);
@@ -271,6 +289,7 @@ class NewPublication extends Component {
     event.preventDefault();
   };
   render() {
+    this.user();
     // this.jsonCreator();
     const formElementsArray = [];
     for (let key in this.state.form) {
@@ -325,4 +344,17 @@ class NewPublication extends Component {
   }
 }
 
-export default NewPublication;
+const mapStateToProps = state => {
+  return {
+    isUser: state.user.isUser
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onUserChanged: () => dispatch(actions.userChanged())
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewPublication);

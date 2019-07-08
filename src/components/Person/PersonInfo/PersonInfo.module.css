@@ -33,3 +33,9 @@
 .InfoDesc {
     width: 100%;
 }
+
+.Loading {
+    min-height: 170px;
+    background-color: #e0e0e0;
+    width: 100%;
+}

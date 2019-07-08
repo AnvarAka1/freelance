@@ -30,3 +30,16 @@
 .Info img {
     border-radius: 50%;
 }
+
+.Loading {
+    min-height: 170px;
+    width: 100%;
+    background-color: #e0e0e0;
+}
+
+.LoadingCircle {
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    border-radius: 50%
+}

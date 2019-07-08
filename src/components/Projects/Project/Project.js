@@ -23,7 +23,12 @@ const project = props => {
       </React.Fragment>
     );
   }
-  return <Paper>{proj}</Paper>;
+  console.log("AUTOHEIGHT, ", props.autoHeight);
+  return (
+    <Paper noHover={props.noHover} autoHeight={props.autoHeight}>
+      {proj}
+    </Paper>
+  );
 };
 
 export default project;

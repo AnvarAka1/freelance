@@ -26,3 +26,13 @@
 .Test {
     white-space: normal
 }
+
+.Selected {
+
+    color: #fff;
+    background-color: #6ACDF0;
+}
+
+.NoMargin {
+    margin: 0
+}
