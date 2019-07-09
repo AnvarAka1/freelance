@@ -24,7 +24,7 @@ class Layout extends Component {
   componentDidMount() {
     this.setState({ loading: true });
     axios
-      .get("ly.json")
+      .get("/ly.json")
       .then(res => {
         this.setState({
           ...this.state,
@@ -93,7 +93,9 @@ class Layout extends Component {
       }
     ];
 
-    const viewProfile = this.props.isUserShown ? this.state.user : this.state.worker;
+    const viewProfile = this.props.isUserShown
+      ? this.state.user
+      : this.state.worker;
 
     let content = (
       <main onClick={event => this.searchButtonHandler(event, false)}>
