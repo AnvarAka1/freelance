@@ -22,7 +22,7 @@ const projects = props => {
           addProject={project.button}
           autoHeight={props.autoHeight}
           clicked={() => {
-            console.log("Hey!");
+            return null;
           }}
         />
       </Grid>

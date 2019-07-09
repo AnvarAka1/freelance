@@ -3,7 +3,6 @@ import React from "react";
 import classes from "./Button.module.css";
 
 const button = props => {
-  const { styleAttr } = props;
   let buttonHolder = !props.addProject ? (
     <button
       onClick={props.clicked}
@@ -11,7 +10,8 @@ const button = props => {
       className={[
         classes.ButtonWrapper,
         classes[props.type],
-        classes[props.addClass]
+        classes[props.addClass],
+        props.active ? classes.Active : null
       ].join(" ")}
       style={props.style}
     >
@@ -22,14 +22,18 @@ const button = props => {
       onClick={props.clicked}
       disabled={props.disabled}
       style={props.style}
+      className={props.active ? classes.Active : null}
     >
       {props.children}
     </button>
   );
 
-  console.log("Style = ", styleAttr);
   return (
     <div
+      style={{
+        width: props.width,
+        height: props.height
+      }}
       className={[
         classes.Button,
         classes[props.container],

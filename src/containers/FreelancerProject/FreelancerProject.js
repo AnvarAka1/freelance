@@ -80,7 +80,7 @@ class FreelancerProject extends Component {
         }
       }
     ],
-    isUser: false
+    isUserShown: false
   };
   componentDidMount() {
     if (this.state.shouldChange) {
@@ -89,9 +89,9 @@ class FreelancerProject extends Component {
     }
   }
   user() {
-    console.log("isUser = ", this.props.isUser);
+    console.log("isUserShown = ", this.props.isUserShown);
 
-    if (this.state.isUser !== this.props.isUser) {
+    if (this.state.isUserShown !== this.props.isUserShown) {
       this.props.onUserChanged();
       this.setState({ shouldChange: true });
     }
@@ -151,7 +151,7 @@ class FreelancerProject extends Component {
 
 const mapStateToProps = state => {
   return {
-    isUser: state.user.isUser
+    isUserShown: state.user.isUserShown
   };
 };
 const mapDispatchToProps = dispatch => {

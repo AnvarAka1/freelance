@@ -7,6 +7,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import ProjectDescription from "./containers/ProjectDescription/ProjectDescription";
 import Freelancers from "./containers/Freelancers/Freelancers";
 import Dashboard from "./containers/Dashboard/Dashboard";
+import FreelancerInfo from "./containers/FreelancerInfo/FreelancerInfo";
 import FreelancerProject from "./containers/FreelancerProject/FreelancerProject";
 // import axios from "axios";
 class App extends Component {
@@ -19,15 +20,16 @@ class App extends Component {
       <div>
         <Layout>
           <Switch>
-            <Route path="/settings" component={UserSettings} />
+            <Route path="/settings" exact component={UserSettings} />
             <Route path="/projects" exact component={MyProjects} />
             <Route path="/projects/:id" component={ProjectDescription} />
-            <Route path="/add" component={NewPublication} />
+            <Route path="/add" exact component={NewPublication} />
             <Route path="/myprojects" component={MyProjects} />
-            <Route path="/freelancers" component={Freelancers} />
-            <Route path="/messages" component={null} />
-            <Route path="/notifications" component={null} />
-            <Route path="/fl/project/:id" component={FreelancerProject} />
+            <Route path="/freelancers/:id" component={FreelancerInfo} />
+            <Route path="/freelancers" exact component={Freelancers} />
+            <Route path="/messages" exact component={null} />
+            <Route path="/notifications" exact component={null} />
+            <Route path="/fl/projects/:id" component={FreelancerProject} />
             <Route path="/" component={Dashboard} />
           </Switch>
         </Layout>

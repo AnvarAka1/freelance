@@ -93,7 +93,7 @@ class Layout extends Component {
       }
     ];
 
-    const viewProfile = this.props.isUser ? this.state.user : this.state.worker;
+    const viewProfile = this.props.isUserShown ? this.state.user : this.state.worker;
 
     let content = (
       <main onClick={event => this.searchButtonHandler(event, false)}>
@@ -150,7 +150,7 @@ class Layout extends Component {
 }
 const mapStateToProps = state => {
   return {
-    isUser: state.user.isUser
+    isUserShown: state.user.isUserShown
   };
 };
 // const mapDispatchToProps = dispatch => {

@@ -1,0 +1,25 @@
+.Portfolio {
+    margin-top: 10px;
+}
+
+.Portfolio a {
+    text-decoration: none;
+}
+
+.Link {
+    text-decoration: none;
+    border: 1px #E5E5E5 solid;
+    outline: none;
+    color: #777;
+    background-color: #fff;
+    padding: 4px 20px 5px 15px;
+    border-radius: 4px;
+    transition: all .25s ease
+}
+
+.Link:hover {
+    background-color: #00B1EB;
+    color: #fff;
+    border-color: #00B1EB;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .25)
+}
