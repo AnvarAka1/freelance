@@ -9,7 +9,9 @@ const navigationItem = props => {
 
   return (
     <li className={navigationClass.join(" ")}>
-      <NavLink to={props.link}>{props.children}</NavLink>
+      <NavLink to={props.link} activeClassName={classes.Active}>
+        {props.children}
+      </NavLink>
     </li>
   );
 };

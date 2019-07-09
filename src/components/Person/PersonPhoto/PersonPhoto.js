@@ -17,7 +17,7 @@ const personPhoto = props => {
     classArray.push(classes.CirclePhoto);
     image = <img src={props.profile.photo} alt={props.profile.name} />;
   }
-  console.log(props.loading);
+
   return <div className={classArray.join(" ")}>{image}</div>;
 };
 

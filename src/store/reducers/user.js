@@ -5,11 +5,11 @@ const initialState = {
   userId: null,
   error: null,
   loading: false,
-  isUser: false
+  isUserShown: false
 };
 
 const changeUser = (state, action) => {
-  return updateObject(state, { isUser: !state.isUser });
+  return updateObject(state, { isUserShown: !state.isUserShown });
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {

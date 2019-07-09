@@ -72,3 +72,17 @@
     width: 190px;
     display: inline-block;
 }
+
+.Menu,
+.Portfolio {
+    margin-bottom: 5px;
+}
+
+.Menu {}
+
+.Portfolio {}
+
+.Active {
+    background-color: #00B1EB;
+    color: white !important
+}

@@ -10,7 +10,12 @@
 .LiSideDrawer a {
     text-decoration: none;
     color: #C4C4C4;
-    font-size: 14px
+    font-size: 14px;
+    transition: color .25s ease;
+}
+
+.Li a:hover {
+    color: #00B1EB
 }
 
 .LiSideDrawer {
@@ -19,3 +24,7 @@
 }
 
 .LiSideDrawer a {}
+
+.Li .Active {
+    color: #00B1EB
+}

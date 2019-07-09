@@ -219,7 +219,7 @@ class UserSettings extends Component {
     },
     formIsValid: false,
     securityFormIsValid: false,
-    isUser: true,
+    isUserShown: true,
     shouldChange: false
   };
   // componentDidMount() {
@@ -239,9 +239,9 @@ class UserSettings extends Component {
     }
   }
   user() {
-    console.log("isUser = ", this.props.isUser);
+    console.log("isUserShown = ", this.props.isUserShown);
 
-    if (this.state.isUser !== this.props.isUser) {
+    if (this.state.isUserShown !== this.props.isUserShown) {
       this.props.onUserChanged();
       this.setState({ shouldChange: true });
     }
@@ -421,7 +421,7 @@ class UserSettings extends Component {
 // );
 const mapStateToProps = state => {
   return {
-    isUser: state.user.isUser
+    isUserShown: state.user.isUserShown
   };
 };
 const mapDispatchToProps = dispatch => {

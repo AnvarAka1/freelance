@@ -5,7 +5,7 @@ state = {
     position: "Unitel Ltd. / Manager",
     description:
       "This job entailed communicating with various consumers, giving solid information about company",
-    isUser: true
+    isUserShown: true
   },
   worker: {
     photo: Photo1,
@@ -44,7 +44,7 @@ state = {
         name: "iOS"
       }
     ],
-    isUser: false
+    isUserShown: false
   },
   touched: false,
   drawerOpened: {

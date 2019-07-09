@@ -15,6 +15,10 @@
     font-size: 24px;
 }
 
+.Heading h1.Small {
+    font-size: 18px;
+}
+
 .Heading p {
     display: inline-block;
     color: #777777;

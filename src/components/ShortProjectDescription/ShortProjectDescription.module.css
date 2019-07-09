@@ -1,0 +1,19 @@
+.ShortProjectDescription {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.ShortProjectDescription p {
+    color: #1c1c1c;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.ShortProjectDescription span {
+    color: #418AB7
+}
+
+.ShortProjectDescription .File span {
+    color: #777777;
+}

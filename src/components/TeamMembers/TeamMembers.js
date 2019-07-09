@@ -8,9 +8,6 @@ import Button from "../UI/Button/Button";
 import classes from "./TeamMembers.module.css";
 
 const teamMembers = props => {
-  // const memberHandler = id => {
-  //   console.log("[TeamMembers] Member clicked with id =", id);
-  // };
   let teamMembersList;
   if (props.members) {
     teamMembersList = props.members.map(member => {

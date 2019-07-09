@@ -45,7 +45,7 @@ class Freelancers extends Component {
       }
     ],
     loading: false,
-    isUser: true,
+    isUserShown: true,
     shouldChange: false
   };
 
@@ -72,9 +72,9 @@ class Freelancers extends Component {
   }
 
   user() {
-    console.log("isUser = ", this.props.isUser);
+    console.log("isUserShown = ", this.props.isUserShown);
 
-    if (this.state.isUser !== this.props.isUser) {
+    if (this.state.isUserShown !== this.props.isUserShown) {
       this.props.onUserChanged();
       this.setState({ shouldChange: true });
     }
@@ -84,20 +84,18 @@ class Freelancers extends Component {
     console.log("[Freelancers]", jsonFile);
   }
   memberHandler = id => {
-    console.log("[Freelancers] memberHandler id =", id);
+    this.props.history.push(`/freelancers/${id}`);
   };
 
   filterHandler = id => {
     let skills = this.state.skills.slice();
     let indexFound;
-    const found = skills.find((element, index) => {
+    skills.find((element, index) => {
       indexFound = index;
       return id === element.id;
     });
-    console.log("Found === " + found + " and index is " + indexFound);
     skills[indexFound].isSelected = !skills[indexFound].isSelected;
     this.setState({ skills: skills });
-    console.log(this.state.skills);
   };
   render() {
     this.user();
@@ -150,7 +148,7 @@ class Freelancers extends Component {
 }
 const mapStateToProps = state => {
   return {
-    isUser: state.user.isUser
+    isUserShown: state.user.isUserShown
   };
 };
 const mapDispatchToProps = dispatch => {

@@ -5,7 +5,11 @@ const lable = props => {
   if (props.project && !props.autoHeightLable) {
     classLableArray.push(classes.LableOverflow);
   }
-  return <p className={classLableArray.join(" ")}>{props.children}</p>;
+  return (
+    <p style={props.style} className={classLableArray.join(" ")}>
+      {props.children}
+    </p>
+  );
 };
 
 export default lable;

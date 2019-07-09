@@ -8,13 +8,32 @@ import Photo1 from "../../assets/photo.png";
 import Photo2 from "../../assets/photo1.png";
 import * as actions from "../../store/actions/index";
 import ProjectShort from "../../components/ProjectShort/ProjectShort";
+import Heading from "../../components/Heading/Heading";
 import { connect } from "react-redux";
+import Grid from "../../components/Grid/Grid";
+import Details from "../../components/Details/Details";
 class ProjectDescription extends Component {
   state = {
     heading: {
       name: "AKFA UNIVERSITY",
       isProject: true,
       link: null
+    },
+    shortProjectInfo: {
+      price: "$200",
+      level: "High-level",
+      positions: ["Front-end developer", "Back-end developer", "Designer"],
+      file: [
+        {
+          id: 1,
+          name: "Assets.zip"
+        }
+      ]
+    },
+    details: {
+      number: "KM-000001",
+      payment: false,
+      status: true
     },
     skills: [
       {
@@ -78,7 +97,7 @@ class ProjectDescription extends Component {
         photo: Photo1
       }
     ],
-    isUser: true,
+    isUserShown: true,
     shouldChange: false
   };
   componentDidMount() {
@@ -88,9 +107,9 @@ class ProjectDescription extends Component {
     }
   }
   user() {
-    console.log("isUser = ", this.props.isUser);
+    console.log("isUserShown = ", this.props.isUserShown);
 
-    if (this.state.isUser !== this.props.isUser) {
+    if (this.state.isUserShown !== this.props.isUserShown) {
       this.props.onUserChanged();
       this.setState({ shouldChange: true });
     }
@@ -106,12 +125,12 @@ class ProjectDescription extends Component {
 
   render() {
     this.user();
-    console.log(this.props.history);
     const projects = (
       <React.Fragment>
         <Projects
+          autoHeight
+          autoHeightLable
           noHover
-          heading={this.state.heading}
           clicked={() => {
             return;
           }}
@@ -131,13 +150,30 @@ class ProjectDescription extends Component {
         />
       </React.Fragment>
     );
-    const addContent = <ProjectShort skills={this.state.skills} />;
-    return <GridPosition two content={projects} addContent={addContent} />;
+    const addContent = (
+      <React.Fragment>
+        <ProjectShort
+          skills={this.state.skills}
+          info={this.state.shortProjectInfo}
+        />
+        <Details details={this.state.details} />
+      </React.Fragment>
+    );
+    return (
+      <React.Fragment>
+        <Grid item xs={12}>
+          <Heading isProject {...this.state.heading}>
+            {this.state.heading.name}
+          </Heading>
+        </Grid>
+        <GridPosition two content={projects} addContent={addContent} />
+      </React.Fragment>
+    );
   }
 }
 const mapStateToProps = state => {
   return {
-    isUser: state.user.isUser
+    isUserShown: state.user.isUserShown
   };
 };
 const mapDispatchToProps = dispatch => {
