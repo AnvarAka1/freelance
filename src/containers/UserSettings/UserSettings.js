@@ -339,7 +339,7 @@ class UserSettings extends Component {
       >
         <Grid container>
           <Grid item xs={12}>
-            <Heading link="something.com">General information</Heading>
+            <Heading>General information</Heading>
           </Grid>
           {formElements}
           <Grid item xs={12}>
