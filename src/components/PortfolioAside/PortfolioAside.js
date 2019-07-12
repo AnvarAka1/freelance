@@ -2,7 +2,7 @@ import React from "react";
 import Paper from "../Paper/Paper";
 import Heading from "../Heading/Heading";
 import { NavLink } from "react-router-dom";
-import Button from "../UI/Button/Button";
+// import Button from "../UI/Button/Button";
 import classes from "./PortfolioAside.module.css";
 const portfolioAside = props => {
   const portfolios = props.portfolios.map(portfolio => {

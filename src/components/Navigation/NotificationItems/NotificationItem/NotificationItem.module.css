@@ -4,3 +4,22 @@
     color: #DBDBDB;
     position: relative;
 }
+
+.NotificationItem a {
+    color: #DBDBDB;
+    transition: .25s ease color
+}
+
+.NotificationItem a:hover {
+    color: #B2B2B2
+}
+
+.Circle {
+    position: absolute;
+    height: 9px;
+    width: 9px;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    background-color: red;
+}

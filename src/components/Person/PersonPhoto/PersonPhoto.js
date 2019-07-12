@@ -18,7 +18,11 @@ const personPhoto = props => {
     image = <img src={props.profile.photo} alt={props.profile.name} />;
   }
 
-  return <div className={classArray.join(" ")}>{image}</div>;
+  return (
+    <div className={classArray.join(" ")} onClick={props.clicked}>
+      {image}
+    </div>
+  );
 };
 
 export default personPhoto;

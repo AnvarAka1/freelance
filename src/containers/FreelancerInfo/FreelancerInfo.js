@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import GridPosition from "../../components/Grid/GridPosition/GridPosition";
 import Paper from "../../components/Paper/Paper";
-import Button from "../../components/UI/Button/Button";
+// import Button from "../../components/UI/Button/Button";
 import Heading from "../../components/Heading/Heading";
 import Lable from "../../components/UI/Lable/Lable";
 import Grid from "../../components/Grid/Grid";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import MenuAside from "../../components/MenuAside/MenuAside";
 import PortfolioAside from "../../components/PortfolioAside/PortfolioAside";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
-import axios from "axios";
+// import axios from "axios";
 
 class FreelancerInfo extends Component {
   state = {
