@@ -4,3 +4,8 @@
     align-items: center;
     height: 100%
 }
+
+.PersonDropdown {
+    position: relative;
+    z-index: 999;
+}

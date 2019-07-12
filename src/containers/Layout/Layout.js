@@ -19,7 +19,8 @@ class Layout extends Component {
     drawerOpened: {
       right: false
     },
-    loading: false
+    loading: false,
+    showMenu: false
   };
   componentDidMount() {
     this.setState({ loading: true });
@@ -73,6 +74,13 @@ class Layout extends Component {
   removeRedirect() {
     this.setState({ redirect: null });
   }
+  profileDropdownHandler = () => {
+    this.setState(prevState => {
+      return {
+        showMenu: !prevState.showMenu
+      };
+    });
+  };
   render() {
     // this.jsonCreator();
     const crumbs = [
@@ -107,49 +115,50 @@ class Layout extends Component {
       this.removeRedirect();
     }
     return (
-      <React.Fragment>
-        <Topbar
-          drawerOpened={this.state.drawerOpened}
-          drawerToggle={this.drawerToggleHandler}
-          touched={this.state.touched}
-          searchButtonClicked={this.searchButtonHandler}
-          profile={this.state.user}
-          loading={this.state.loading}
-        />
+      <div>
+        {this.props.isAuthorized ? (
+          <React.Fragment>
+            <Topbar
+              profileClicked={this.profileDropdownHandler}
+              show={this.state.showMenu}
+              drawerOpened={this.state.drawerOpened}
+              drawerToggle={this.drawerToggleHandler}
+              touched={this.state.touched}
+              searchButtonClicked={this.searchButtonHandler}
+              profile={this.state.user}
+              loading={this.state.loading}
+            />
 
-        {/*  
-          redux state => all can see public(global)
-          redux state isUser=true
-          // newState === oldState ? null : axios(get, ).then()
-          redux state isUser=false
+            <div className={classes.Padding}>
+              <Grid container>
+                <Grid item xs={12}>
+                  <BreadCrumbs crumbs={crumbs} />
+                </Grid>
 
-          userName: Anvar
-          Photo: src
-        */}
-        <div className={classes.Padding}>
-          <Grid container>
-            <Grid item xs={12}>
-              <BreadCrumbs crumbs={crumbs} />
-            </Grid>
-            <Grid item xs={2}>
-              <Person
-                editClicked={() => this.clickHandler("/settings")}
-                inviteClicked={() => this.clickHandler("/invite")}
-                contactClicked={() => this.clickHandler("/contact")}
-                profile={viewProfile}
-                loading={this.state.loading}
-              />
-            </Grid>
-            <Grid item xs={10}>
-              {content}
-            </Grid>
-          </Grid>
-        </div>
-        <Footer />
-      </React.Fragment>
+                <Grid item xs={2}>
+                  <Person
+                    editClicked={() => this.clickHandler("/settings")}
+                    inviteClicked={() => this.clickHandler("/invite")}
+                    contactClicked={() => this.clickHandler("/contact")}
+                    profile={viewProfile}
+                    loading={this.state.loading}
+                  />
+                </Grid>
+                <Grid item xs={10}>
+                  {content}
+                </Grid>
+              </Grid>
+            </div>
+            <Footer />
+          </React.Fragment>
+        ) : (
+          content
+        )}
+      </div>
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     isUserShown: state.user.isUserShown
