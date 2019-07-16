@@ -15,11 +15,14 @@ const person = props => {
     <div className={classes.Person}>
       <div onClick={props.clicked} className={classes[props.type]}>
         <PersonPhoto
+          isEditable={props.isEditable}
+          style={props.photoStyle}
           circle={props.circle}
           profile={props.profile}
           team={props.team}
           info={props.info}
           loading={props.loading}
+          submitHandler={props.submitHandler}
         />
         <PersonInfo
           profile={props.profile}

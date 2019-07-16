@@ -17,16 +17,17 @@ const skills = props => {
     : props.skills.map(skill => {
         additionalClass = skill.isSelected ? classes.Selected : null;
         return (
-          <p
-            style={{
-              cursor: "pointer"
-            }}
-            key={skill.id}
-            onClick={() => props.clicked(skill.id)}
-            className={[classes.Skill, additionalClass].join(" ")}
-          >
-            <span className={classes.Test}>{skill.name}</span>
-          </p>
+          <a key={skill.id} href={props.fileLink}>
+            <p
+              style={{
+                cursor: "pointer"
+              }}
+              onClick={() => props.clicked(skill.id)}
+              className={[classes.Skill, additionalClass].join(" ")}
+            >
+              <span className={classes.Test}>{skill.name}</span>
+            </p>
+          </a>
         );
       });
   const skillsHolder = !props.isClickable ? (
@@ -38,6 +39,10 @@ const skills = props => {
     <React.Fragment>{skillsList}</React.Fragment>
   );
 
-  return <div className={skillsArray.join(" ")}>{skillsHolder}</div>;
+  return (
+    <div className={skillsArray.join(" ")} style={props.skillsStyle}>
+      {skillsHolder}
+    </div>
+  );
 };
 export default skills;

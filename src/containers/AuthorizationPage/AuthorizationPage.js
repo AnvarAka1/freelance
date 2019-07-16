@@ -252,6 +252,7 @@ class AuthorizationPage extends Component {
       };
     });
   };
+
   formSubmitHandler = event => {
     event.preventDefault();
     if (this.state.isSignup) {

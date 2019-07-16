@@ -5,7 +5,8 @@ const initialState = {
   userId: null,
   error: null,
   loading: false,
-  isUserShown: false
+  isUserShown: false,
+  isUser: false
 };
 
 const changeUser = (state, action) => {
