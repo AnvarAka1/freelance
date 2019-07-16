@@ -5,12 +5,13 @@ import GridPosition from "../../components/Grid/GridPosition/GridPosition";
 import TeamMembers from "../../components/TeamMembers/TeamMembers";
 // import Photo1 from "../../assets/photo.png";
 // import Photo2 from "../../assets/photo1.png";
-import Filter from "../../components/Filter/Filter";
+import Filter from "../../components/AsideFilter/Filter/Filter";
 import axios from "axios";
 import * as actions from "../../store/actions/index";
 import Heading from "../../components/Heading/Heading";
 import { connect } from "react-redux";
 import Icon from "@material-ui/core/Icon";
+import AsideFilter from "../../components/AsideFilter/AsideFilter";
 // import Button from "../../components/UI/Button/Button";
 class Freelancers extends Component {
   state = {
@@ -114,25 +115,10 @@ class Freelancers extends Component {
     );
     const addContent = (
       <React.Fragment>
-        <Heading
-          style={{
-            display: "flex",
-            alignItems: "flex-end"
-          }}
-        >
-          Filter
-          <Icon
-            style={{
-              fontSize: "14px",
-              marginLeft: "5px",
-              display: "inline-block",
-              paddingBottom: "5px"
-            }}
-          >
-            tune
-          </Icon>
-        </Heading>
-        <Filter skills={this.state.skills} clicked={this.filterHandler} />
+        <AsideFilter
+          filter={this.state.skills}
+          filterHandler={this.filterHandler}
+        />
       </React.Fragment>
     );
     return (

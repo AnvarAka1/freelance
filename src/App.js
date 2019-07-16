@@ -9,6 +9,7 @@ import Freelancers from "./containers/Freelancers/Freelancers";
 import Dashboard from "./containers/Dashboard/Dashboard";
 import FreelancerInfo from "./containers/FreelancerInfo/FreelancerInfo";
 import FreelancerProject from "./containers/FreelancerProject/FreelancerProject";
+import Feed from "./containers/Feed/Feed";
 import AuthorizationPage from "./containers/AuthorizationPage/AuthorizationPage";
 import { connect } from "react-redux";
 // import axios from "axios";
@@ -29,6 +30,7 @@ class App extends Component {
         <Switch>
           <Route path="/settings" exact component={UserSettings} />
           <Route path="/projects" exact component={MyProjects} />
+          <Route path="/feed" exact component={Feed} />
           <Route path="/projects/:id" component={ProjectDescription} />
           <Route path="/add" exact component={NewPublication} />
           <Route path="/myprojects" component={MyProjects} />

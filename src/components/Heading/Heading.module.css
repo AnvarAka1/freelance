@@ -34,6 +34,13 @@
     font-size: 18px;
 }
 
+.Heading .SubHeading {
+    color: #00B1EB;
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: block;
+}
+
 .DateHeading {
     display: flex;
     justify-content: space-between;
@@ -44,4 +51,32 @@
     font-size: 10px;
     margin: 0;
     color: #777777;
+}
+
+.Heading .Gray {
+    width: 25%;
+    justify-content: flex-end;
+    color: #C4C4C4;
+    display: flex;
+    align-items: flex-start;
+    font-size: 12px;
+    height: 40px
+}
+
+
+.Heading .Gray span {
+    /* display: inline-block !important; */
+    font-size: 12px;
+    margin-right: 2px;
+    vertical-align: middle;
+}
+
+.Heading .Gray>span {
+    margin-right: 5px;
+    display: inline-block;
+    height: 100%;
+}
+
+.Heading .Gray span span {
+    display: inline-block;
 }

@@ -39,6 +39,10 @@ const skills = props => {
     <React.Fragment>{skillsList}</React.Fragment>
   );
 
-  return <div className={skillsArray.join(" ")}>{skillsHolder}</div>;
+  return (
+    <div className={skillsArray.join(" ")} style={props.skillsStyle}>
+      {skillsHolder}
+    </div>
+  );
 };
 export default skills;

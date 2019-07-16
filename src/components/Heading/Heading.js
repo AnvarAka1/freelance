@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Heading.module.css";
-
+import Icon from "@material-ui/core/Icon";
 const heading = props => {
   const headerClasses = props.hType ? [classes[props.hType]] : [];
   if (props.small) {
@@ -9,13 +9,39 @@ const heading = props => {
   const addHeading = props.addHeading ? (
     <p style={{ display: "inline" }}>{props.addHeading}</p>
   ) : null;
+  const subHeading = props.subHeading ? (
+    <p className={classes.SubHeading}>
+      {props.subHeading.name} | ${props.subHeading.price} |{" "}
+      {props.subHeading.level}
+    </p>
+  ) : null;
+
   const head = props.date ? (
     <React.Fragment>
       <h1 style={props.style} className={headerClasses.join(" ")}>
         {props.children}
+        {subHeading}
       </h1>
       {addHeading}
-      <p className={classes.Date}>{props.date}</p>
+      {props.viewed ? (
+        <p className={[classes.Date, classes.Gray].join(" ")}>
+          {props.isActiveState ? (
+            <span style={{ color: "#66CA37", fontWeight: "bold" }}>Active</span>
+          ) : (
+            <span style={{ fontWeight: "bold" }}>Expired</span>
+          )}
+          <span>
+            <Icon>access_time</Icon>
+            {props.date}
+          </span>
+          <span>
+            <Icon>visibility</Icon>
+            {props.viewed}
+          </span>
+        </p>
+      ) : (
+        <p className={classes.Date}>{props.date}</p>
+      )}
     </React.Fragment>
   ) : (
     <div>

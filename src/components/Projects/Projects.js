@@ -13,14 +13,21 @@ const projects = props => {
         {...project.grid}
       >
         <Project
+          small={props.small}
           noHover={props.noHover}
           autoHeightLable={props.autoHeightLable}
           overflow={props.overflow}
+          subHeading={project.subHeading}
           project={project.project}
           content={project.content}
+          isActiveState={project.isActive}
+          skills={project.skills}
           date={project.date}
+          viewed={project.viewed}
           addProject={project.button}
           autoHeight={props.autoHeight}
+          paperStyle={props.paperStyle}
+          skillsStyle={props.skillsStyle}
           clicked={() => {
             return null;
           }}
