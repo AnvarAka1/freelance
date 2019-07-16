@@ -16,7 +16,14 @@ const shortProjectDescription = props => {
       </p>
       <div className={classes.File}>
         Attached files:
-        <Skills skills={file} />
+        <Skills
+          skills={file}
+          fileLink={props.fileLink}
+          isClickable
+          clicked={() => {
+            return;
+          }}
+        />
       </div>
     </div>
   );

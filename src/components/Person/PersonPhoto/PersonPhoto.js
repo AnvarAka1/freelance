@@ -1,4 +1,5 @@
 import React from "react";
+import ChangeAvatar from "../../ChangeAvatar/ChangeAvatar.js";
 import classes from "./PersonPhoto.module.css";
 const personPhoto = props => {
   const classArray = [classes.PersonPhoto];
@@ -19,8 +20,16 @@ const personPhoto = props => {
   }
 
   return (
-    <div className={classArray.join(" ")} onClick={props.clicked}>
+    <div
+      className={classArray.join(" ")}
+      onClick={props.clicked}
+      ref={props.fRef}
+      style={props.style}
+    >
       {image}
+      {props.isEditable ? (
+        <ChangeAvatar submitHandler={props.submitHandler} />
+      ) : null}
     </div>
   );
 };

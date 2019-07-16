@@ -97,6 +97,7 @@ class ProjectDescription extends Component {
         photo: Photo1
       }
     ],
+    fileLink: "#",
     isUserShown: true,
     shouldChange: false
   };
@@ -120,7 +121,7 @@ class ProjectDescription extends Component {
   }
 
   memberHandler = id => {
-    console.log("[Project Description] Member clicked with id =", id);
+    this.props.history.push(`/freelancers/${id}`);
   };
 
   render() {
@@ -153,6 +154,7 @@ class ProjectDescription extends Component {
     const addContent = (
       <React.Fragment>
         <ProjectShort
+          fileLink={this.state.fileLink}
           skills={this.state.skills}
           info={this.state.shortProjectInfo}
         />

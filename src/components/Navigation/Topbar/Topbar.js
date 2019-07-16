@@ -46,6 +46,7 @@ const topbar = props => {
                 show={props.show}
                 profile={props.profile}
                 loading={props.loading}
+                fRef={props.fRef}
               />
             </Grid>
 

@@ -26,6 +26,7 @@ const notificationItems = props => {
       <Hidden smDown>
         <div className={classes.PersonDropdown}>
           <PersonPhoto
+            fRef={props.fRef}
             clicked={props.clicked}
             circle
             profile={props.profile}

@@ -9,7 +9,7 @@ const projectShort = props => {
   return (
     <Paper noHover autoHeight>
       <Skills skills={props.skills}>Skills</Skills>
-      <ShortProjectDescription info={props.info} />
+      <ShortProjectDescription fileLink={props.fileLink} info={props.info} />
       <Button>Edit Project</Button>
     </Paper>
   );

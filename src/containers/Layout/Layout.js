@@ -10,6 +10,7 @@ import classes from "./Layout.module.css";
 // import Photo1 from "../../assets/photo1.png";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import Modal from "@material-ui/core/Modal";
 import axios from "axios";
 // Needs to be converted to functional component and use REDUX for handling the state
 class Layout extends Component {
@@ -20,9 +21,11 @@ class Layout extends Component {
       right: false
     },
     loading: false,
-    showMenu: false
+    showMenu: false,
+    showModal: false
   };
   componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
     this.setState({ loading: true });
     axios
       .get("/ly.json")
@@ -37,10 +40,32 @@ class Layout extends Component {
         console.log(err);
       });
   }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+
+  setWrapperRef = node => {
+    this.wrapperRef = node;
+  };
+  handleClickOutside = event => {
+    if (this.state.showMenu) {
+      if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+        this.profileDropdownHandler();
+      }
+    }
+  };
   jsonCreator() {
     const jsonFile = JSON.stringify(this.state);
     console.log("[Layout]", jsonFile);
   }
+  searchButtonCloseHandler = () => {
+    this.setState(prevState => {
+      return {
+        touched: !prevState.touched
+      };
+    });
+  };
   searchButtonHandler = (event, status) => {
     if (status != null) {
       this.setState({ touched: status });
@@ -66,7 +91,7 @@ class Layout extends Component {
       };
     });
   };
-
+  modalCloseHandler;
   clickHandler = path => {
     // this.props.history.push("/settings");
     this.setState({ redirect: path });
@@ -74,12 +99,27 @@ class Layout extends Component {
   removeRedirect() {
     this.setState({ redirect: null });
   }
+
   profileDropdownHandler = () => {
     this.setState(prevState => {
       return {
         showMenu: !prevState.showMenu
       };
     });
+  };
+
+  modalOpenHandler = () => {
+    this.setState({
+      showModal: true
+    });
+  };
+  modalCloseHandler = () => {
+    this.setState({
+      showModal: false
+    });
+  };
+  photoChangeHandler = () => {
+    console.log("change");
   };
   render() {
     // this.jsonCreator();
@@ -119,6 +159,7 @@ class Layout extends Component {
         {this.props.isAuthorized ? (
           <React.Fragment>
             <Topbar
+              fRef={this.setWrapperRef}
               profileClicked={this.profileDropdownHandler}
               show={this.state.showMenu}
               drawerOpened={this.state.drawerOpened}
@@ -137,11 +178,18 @@ class Layout extends Component {
 
                 <Grid item xs={2}>
                   <Person
+                    isEditable
+                    photoStyle={{
+                      border: "5px #fff solid",
+                      padding: "0",
+                      margin: "auto"
+                    }}
                     editClicked={() => this.clickHandler("/settings")}
                     inviteClicked={() => this.clickHandler("/invite")}
                     contactClicked={() => this.clickHandler("/contact")}
                     profile={viewProfile}
                     loading={this.state.loading}
+                    submitHandler={this.photoChangeHandler}
                   />
                 </Grid>
                 <Grid item xs={10}>
@@ -150,6 +198,10 @@ class Layout extends Component {
               </Grid>
             </div>
             <Footer />
+            {/* <Modal open={this.state.showModal} onClose={this.modalCloseHandler}>
+              <div>something</div>
+            </Modal>
+            <p onClick={this.modalOpenHandler}>Modal</p> */}
           </React.Fragment>
         ) : (
           content
