@@ -46,7 +46,11 @@ const teamMembers = props => {
 
       {props.showbutton ? (
         <div className={classes.Center}>
-          <Button type="disabled" container="Center">
+          <Button
+            type="disabled"
+            container="Center"
+            clicked={props.loadMoreClicked}
+          >
             Load More
           </Button>
         </div>
