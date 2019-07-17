@@ -22,6 +22,7 @@ const person = props => {
           team={props.team}
           info={props.info}
           loading={props.loading}
+          clicked={props.submitHandler}
           submitHandler={props.submitHandler}
         />
         <PersonInfo

@@ -46,6 +46,7 @@ class Freelancers extends Component {
       }
     ],
     loading: false,
+    showButton: false,
     isUserShown: true,
     shouldChange: false
   };
@@ -61,6 +62,7 @@ class Freelancers extends Component {
           loading: false,
           persons: persons
         });
+        this.checkShowButton();
       })
       .catch(err => {
         console.log(err.data);
@@ -98,8 +100,22 @@ class Freelancers extends Component {
     skills[indexFound].isSelected = !skills[indexFound].isSelected;
     this.setState({ skills: skills });
   };
+  checkShowButton() {
+    if (this.state.persons) {
+      if (this.state.persons.length < 10) {
+        this.setState({ showButton: false });
+      } else {
+        this.setState({ showButton: true });
+      }
+    }
+  }
+  loadMoreHandler = () => {
+    // axios.get()
+    // get more people
+  };
   render() {
     this.user();
+
     // this.jsonCreator();
     const content = (
       <React.Fragment>
@@ -108,7 +124,8 @@ class Freelancers extends Component {
           clicked={this.memberHandler}
           members={this.state.persons}
           info
-          showbutton
+          loadMoreClicked={this.loadMoreHandler}
+          showbutton={this.state.showButton}
           loading={this.state.loading}
         />
       </React.Fragment>

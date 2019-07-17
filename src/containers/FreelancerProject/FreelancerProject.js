@@ -102,7 +102,7 @@ class FreelancerProject extends Component {
   }
 
   memberHandler = id => {
-    console.log("[Project Description] Member clicked with id =", id);
+    this.props.history.push(`/freelancers/${id}`);
   };
 
   render() {

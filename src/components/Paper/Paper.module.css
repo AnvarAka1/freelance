@@ -16,6 +16,14 @@
     box-shadow: none
 }
 
+.Paper p:after {
+    transition: .5s ease background-color
+}
+
+.Paper:hover p:after {
+    background-color: #eee;
+}
+
 .NoHover {
     cursor: auto;
 }
